@@ -475,6 +475,17 @@
       line-height: 1.6;
       text-align: right;
     }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      transition: color var(--ease);
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
     .footer-paystack {
       display: inline-flex;
       align-items: center;
@@ -517,6 +528,7 @@
       .cta-section { padding: 4.5rem 1.5rem; }
       .footer { padding: 2.5rem 1.5rem; flex-direction: column; }
       .footer-copy { text-align: left; }
+      .footer-links { flex-wrap: wrap; gap: 1rem; }
     }
     @media (max-width: 560px) {
       .steps-grid { grid-template-columns: 1fr; }
@@ -702,6 +714,11 @@
     <div>
       <div class="footer-logo">Stacy's Mom</div>
       <div class="footer-tagline">Family meal planning, simplified.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact</a>
     </div>
     <div>
       <div class="footer-copy">© 2025 Zenzi. All rights reserved.</div>
