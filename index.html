@@ -6,35 +6,37 @@
   <title>Stacy's Mom | Family Meal Planning, Simplified</title>
   <meta name="description" content="Plan a week of family dinners in minutes. Stacy's Mom builds your meal plan around your recipes, preferences, and what's already in the fridge." />
 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <!-- SWAP THESE BEFORE GOING LIVE -->
   <script>
-    const APP_REGISTER_URL = 'https://stacy-meal-planner.onrender.com/register';
-    const APP_LOGIN_URL    = 'https://stacy-meal-planner.onrender.com/login';
+    const APP_REGISTER_URL = 'APP_REGISTER_URL';
+    const APP_LOGIN_URL    = 'APP_LOGIN_URL';
   </script>
 
   <style>
     /* ── Design Tokens ─────────────────────────────────── */
     :root {
-      --color-bg:          #faf7f2;
-      --color-surface:     #ffffff;
-      --color-surface-2:   #f5f0e8;
-      --color-border:      #e5ddd0;
-      --color-olive:       #4a5240;
-      --color-olive-light: #6b7a5e;
-      --color-olive-dark:  #353c2f;
-      --color-clay:        #a0522d;
-      --color-clay-light:  #c4784f;
-      --color-text:        #2c2a26;
-      --color-text-muted:  #7a6a55;
-      --color-text-light:  #b0a090;
-      --radius-sm:  6px;
-      --radius-md:  10px;
-      --radius-lg:  16px;
-      --radius-full: 9999px;
-      --shadow-sm: 0 1px 3px rgba(44,42,38,0.08);
-      --shadow-md: 0 4px 16px rgba(44,42,38,0.10);
-      --font-body: 'Georgia', 'Times New Roman', serif;
-      --font-ui:   system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --color-jungle:   #2D5A3D;
+      --color-hero-bg:  #F9E8EF;
+      --color-cta:      #C1402A;
+      --color-cta-dark: #A33420;
+      --color-heading:  #3D2B1E;
+      --color-active:   #2D5A3D;
+      --color-inactive: #B88888;
+      --color-bg:       #FFFFFF;
+      --color-border:   #E8E0DC;
+      --color-muted:    #8A6A64;
+      --color-faint:    #C4A8A0;
+
+      --radius-nav:  0px;
+      --radius-hero: 14px;
+      --radius-card: 12px;
+      --radius-icon: 8px;
+      --radius-pill: 18px;
+
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-ui:      'Nunito', system-ui, sans-serif;
       --ease: 200ms ease;
     }
 
@@ -44,7 +46,7 @@
     body {
       font-family: var(--font-ui);
       font-size: 16px;
-      color: var(--color-text);
+      color: var(--color-heading);
       background: var(--color-bg);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
@@ -61,68 +63,89 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 3rem;
-      background: rgba(250, 247, 242, 0.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--color-border);
+      background: var(--color-jungle);
     }
     .nav-logo {
-      font-family: var(--font-body);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--color-olive-dark);
-      letter-spacing: -0.01em;
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.95);
+      letter-spacing: 0.01em;
     }
-    .nav-logo span { color: var(--color-clay); }
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
     .nav-login {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--color-text-muted);
-      padding: 0.5rem 0.75rem;
-      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      padding: 0.45rem 0.75rem;
+      border-radius: var(--radius-pill);
       transition: color var(--ease);
     }
-    .nav-login:hover { color: var(--color-text); }
+    .nav-login:hover { color: #fff; }
+
+    /* ── Buttons ───────────────────────────────────────── */
     .btn-primary {
       display: inline-block;
       font-family: var(--font-ui);
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.875rem;
+      font-weight: 700;
       color: #fff;
-      background: var(--color-olive);
+      background: var(--color-cta);
       border: none;
-      padding: 0.6rem 1.25rem;
-      border-radius: var(--radius-full);
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-pill);
       cursor: pointer;
       transition: background var(--ease), transform var(--ease);
       text-decoration: none;
+      line-height: 1;
     }
     .btn-primary:hover {
-      background: var(--color-olive-dark);
+      background: var(--color-cta-dark);
       transform: translateY(-1px);
     }
     .btn-outline {
       display: inline-block;
       font-family: var(--font-ui);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-olive);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-cta);
       background: transparent;
-      border: 2px solid var(--color-olive);
-      padding: 0.6rem 1.25rem;
-      border-radius: var(--radius-full);
+      border: 2px solid var(--color-cta);
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-pill);
       cursor: pointer;
       transition: background var(--ease), color var(--ease), transform var(--ease);
       text-decoration: none;
+      line-height: 1;
     }
     .btn-outline:hover {
-      background: var(--color-olive);
+      background: var(--color-cta);
       color: #fff;
+      transform: translateY(-1px);
+    }
+    .btn-outline-white {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #fff;
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.6);
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: background var(--ease), border-color var(--ease), transform var(--ease);
+      text-decoration: none;
+      line-height: 1;
+    }
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: #fff;
       transform: translateY(-1px);
     }
     .btn-lg {
@@ -131,12 +154,18 @@
     }
 
     /* ── Hero ──────────────────────────────────────────── */
+    .hero-wrap {
+      padding: 5.5rem 3rem 0;
+      background: var(--color-bg);
+    }
     .hero {
-      min-height: 100vh;
+      background: var(--color-hero-bg);
+      border-radius: var(--radius-hero);
+      min-height: 82vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 7rem 3rem 4rem;
+      padding: 5rem 3rem 4rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -144,52 +173,41 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: -20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(74,82,64,0.06) 0%, transparent 70%);
+      bottom: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(193,64,42,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero-inner {
-      max-width: 760px;
-      position: relative;
-    }
+    .hero-inner { max-width: 720px; position: relative; }
     .hero-eyebrow {
       display: inline-block;
+      font-family: var(--font-ui);
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--color-clay);
-      background: rgba(160,82,45,0.08);
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-full);
-      margin-bottom: 1.5rem;
+      color: var(--color-cta);
+      margin-bottom: 1.25rem;
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 0.1s;
     }
     .hero-heading {
-      font-family: var(--font-body);
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 700;
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 400;
       line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--color-olive-dark);
+      color: var(--color-heading);
       margin-bottom: 1.25rem;
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 0.25s;
     }
-    .hero-heading em {
-      font-style: italic;
-      color: var(--color-clay);
-    }
     .hero-sub {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      font-weight: 400;
       line-height: 1.7;
-      color: var(--color-text-muted);
-      max-width: 520px;
+      color: var(--color-muted);
+      max-width: 500px;
       margin: 0 auto 2.25rem;
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 0.4s;
@@ -206,45 +224,40 @@
     .hero-note {
       margin-top: 1.25rem;
       font-size: 0.8rem;
-      color: var(--color-text-light);
+      color: var(--color-inactive);
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 0.7s;
     }
 
     /* ── Section base ──────────────────────────────────── */
-    .section {
-      padding: 6rem 3rem;
-    }
-    .section-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-    }
+    .section { padding: 6rem 3rem; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
     .section-label {
-      font-size: 0.7rem;
-      font-weight: 600;
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--color-clay);
+      color: var(--color-cta);
       margin-bottom: 0.75rem;
     }
     .section-title {
-      font-family: var(--font-body);
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      color: var(--color-olive-dark);
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      color: var(--color-heading);
       line-height: 1.2;
-      letter-spacing: -0.01em;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
     .section-sub {
       font-size: 1rem;
-      color: var(--color-text-muted);
+      font-weight: 400;
+      color: var(--color-muted);
       line-height: 1.7;
-      max-width: 560px;
+      max-width: 540px;
       margin-bottom: 3.5rem;
     }
-
-    /* ── Divider ───────────────────────────────────────── */
     .divider {
       height: 1px;
       background: var(--color-border);
@@ -255,70 +268,68 @@
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+      gap: 1.25rem;
     }
     .step-card {
-      padding: 2.5rem 2rem;
-      border-right: 1px solid var(--color-border);
-      background: var(--color-surface);
-      transition: background var(--ease);
-      position: relative;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: 2rem 1.75rem;
+      transition: box-shadow var(--ease), transform var(--ease);
     }
-    .step-card:last-child { border-right: none; }
-    .step-card:hover { background: var(--color-surface-2); }
+    .step-card:hover {
+      box-shadow: 0 6px 24px rgba(61,43,30,0.08);
+      transform: translateY(-2px);
+    }
     .step-number {
-      font-family: var(--font-body);
-      font-size: 2.5rem;
-      font-weight: 700;
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 400;
       color: var(--color-border);
       line-height: 1;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
     .step-icon {
-      font-size: 1.6rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.65rem;
     }
     .step-title {
       font-weight: 700;
       font-size: 0.95rem;
-      color: var(--color-text);
-      margin-bottom: 0.5rem;
+      color: var(--color-heading);
+      margin-bottom: 0.45rem;
     }
     .step-desc {
       font-size: 0.85rem;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
       line-height: 1.6;
     }
 
     /* ── Features ──────────────────────────────────────── */
     .features-section {
-      background: var(--color-olive-dark);
+      background: var(--color-jungle);
       padding: 6rem 3rem;
     }
-    .features-section .section-label { color: var(--color-clay-light); }
+    .features-section .section-label { color: rgba(249,232,239,0.7); }
     .features-section .section-title { color: #fff; }
     .features-section .section-sub   { color: rgba(255,255,255,0.55); }
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.12);
+      border-radius: var(--radius-card);
       overflow: hidden;
     }
     .feature-card {
-      background: var(--color-olive-dark);
+      background: var(--color-jungle);
       padding: 2rem 1.75rem;
       transition: background var(--ease);
     }
-    .feature-card:hover { background: rgba(255,255,255,0.05); }
+    .feature-card:hover { background: rgba(255,255,255,0.06); }
     .feature-icon {
       font-size: 1.5rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
     .feature-title {
       font-weight: 700;
@@ -333,6 +344,10 @@
     }
 
     /* ── Pricing ───────────────────────────────────────── */
+    .pricing-section { background: var(--color-hero-bg); }
+    .pricing-section .section-label { color: var(--color-cta); }
+    .pricing-section .section-title { color: var(--color-heading); }
+    .pricing-section .section-sub   { color: var(--color-muted); }
     .pricing-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -341,62 +356,62 @@
       margin: 0 auto;
     }
     .pricing-card {
-      background: var(--color-surface);
+      background: var(--color-bg);
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-card);
       padding: 2.25rem 2rem;
       position: relative;
     }
     .pricing-card.featured {
-      border-color: var(--color-olive);
-      box-shadow: 0 0 0 1px var(--color-olive), var(--shadow-md);
+      border-color: var(--color-cta);
+      box-shadow: 0 0 0 1px var(--color-cta), 0 8px 32px rgba(193,64,42,0.12);
     }
     .pricing-badge {
       position: absolute;
-      top: -12px;
-      left: 50%;
+      top: -13px; left: 50%;
       transform: translateX(-50%);
-      background: var(--color-olive);
+      background: var(--color-cta);
       color: #fff;
-      font-size: 0.68rem;
+      font-family: var(--font-ui);
+      font-size: 0.66rem;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      padding: 0.3rem 0.85rem;
-      border-radius: var(--radius-full);
+      padding: 0.3rem 0.9rem;
+      border-radius: var(--radius-pill);
       white-space: nowrap;
     }
     .pricing-tier {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: 1rem;
+      color: var(--color-inactive);
+      margin-bottom: 0.85rem;
     }
     .pricing-price {
-      font-family: var(--font-body);
+      font-family: var(--font-heading);
       font-size: 2.8rem;
       font-weight: 700;
-      color: var(--color-olive-dark);
+      color: var(--color-heading);
       line-height: 1;
       margin-bottom: 0.35rem;
     }
     .pricing-price .currency {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       vertical-align: top;
-      margin-top: 0.4rem;
+      margin-top: 0.45rem;
       display: inline-block;
     }
     .pricing-price .period {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 400;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
       font-family: var(--font-ui);
     }
     .pricing-desc {
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
+      font-size: 0.875rem;
+      color: var(--color-muted);
       margin-bottom: 1.5rem;
       line-height: 1.55;
     }
@@ -414,34 +429,27 @@
       align-items: flex-start;
       gap: 0.6rem;
       font-size: 0.875rem;
-      color: var(--color-text);
+      color: var(--color-heading);
       margin-bottom: 0.7rem;
       line-height: 1.5;
     }
-    .pricing-features li .check {
-      color: var(--color-olive);
-      font-size: 0.9rem;
-      flex-shrink: 0;
-      margin-top: 0.05rem;
-    }
-    .pricing-features li .dash {
-      color: var(--color-text-light);
-      flex-shrink: 0;
-    }
-    .pricing-features li.muted { color: var(--color-text-muted); }
+    .pricing-features li .check { color: var(--color-jungle); font-size: 0.9rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .pricing-features li .cross  { color: var(--color-faint); font-size: 0.9rem; flex-shrink: 0; }
+    .pricing-features li.muted  { color: var(--color-faint); }
 
     /* ── CTA Banner ────────────────────────────────────── */
     .cta-section {
-      background: var(--color-surface-2);
+      background: var(--color-jungle);
       padding: 6rem 3rem;
       text-align: center;
     }
-    .cta-section .section-title { margin-bottom: 0.75rem; }
-    .cta-section .section-sub   { margin: 0 auto 2.5rem; }
+    .cta-section .section-label { color: rgba(249,232,239,0.65); }
+    .cta-section .section-title { color: #fff; margin-bottom: 0.75rem; }
+    .cta-section .section-sub   { color: rgba(255,255,255,0.6); margin: 0 auto 2.5rem; }
 
     /* ── Footer ────────────────────────────────────────── */
     .footer {
-      background: var(--color-olive-dark);
+      background: var(--color-heading);
       padding: 3rem;
       display: flex;
       align-items: center;
@@ -450,32 +458,30 @@
       gap: 1rem;
     }
     .footer-logo {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 700;
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 400;
       color: rgba(255,255,255,0.9);
     }
-    .footer-logo span { color: var(--color-clay-light); }
     .footer-tagline {
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.4);
-      margin-top: 0.2rem;
-    }
-    .footer-right {
-      text-align: right;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.25rem;
     }
     .footer-copy {
       font-size: 0.78rem;
       color: rgba(255,255,255,0.35);
       line-height: 1.6;
+      text-align: right;
     }
     .footer-paystack {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       font-size: 0.72rem;
-      color: rgba(255,255,255,0.3);
-      margin-top: 0.4rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 0.35rem;
     }
 
     /* ── Scroll reveal ─────────────────────────────────── */
@@ -500,26 +506,22 @@
     @media (max-width: 900px) {
       .nav { padding: 1rem 1.5rem; }
       .nav-login { display: none; }
-      .hero { padding: 6rem 1.5rem 3.5rem; }
+      .hero-wrap { padding: 4.5rem 1.5rem 0; }
+      .hero { padding: 4rem 1.5rem 3.5rem; }
       .section { padding: 4.5rem 1.5rem; }
       .divider { margin: 0 1.5rem; }
-      .steps-grid { grid-template-columns: 1fr 1fr; }
-      .step-card:nth-child(2) { border-right: none; }
-      .step-card:nth-child(3) { border-top: 1px solid var(--color-border); }
-      .step-card:nth-child(4) { border-top: 1px solid var(--color-border); border-right: none; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
       .features-section { padding: 4.5rem 1.5rem; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
       .cta-section { padding: 4.5rem 1.5rem; }
-      .footer { padding: 2.5rem 1.5rem; flex-direction: column; text-align: left; }
-      .footer-right { text-align: left; }
+      .footer { padding: 2.5rem 1.5rem; flex-direction: column; }
+      .footer-copy { text-align: left; }
     }
     @media (max-width: 560px) {
       .steps-grid { grid-template-columns: 1fr; }
-      .step-card { border-right: none !important; border-top: 1px solid var(--color-border); }
-      .step-card:first-child { border-top: none; }
       .features-grid { grid-template-columns: 1fr; }
-      .hero-heading { font-size: clamp(2.2rem, 8vw, 3.2rem); }
+      .hero-heading { font-size: clamp(2.1rem, 8vw, 3rem); }
     }
   </style>
 </head>
@@ -527,7 +529,7 @@
 
   <!-- ── Nav ─────────────────────────────────────────── -->
   <nav class="nav">
-    <div class="nav-logo">Stacy's <span>Mom</span></div>
+    <div class="nav-logo">Stacy's Mom</div>
     <div class="nav-actions">
       <a class="nav-login" href="#" onclick="go(APP_LOGIN_URL); return false;">Log in</a>
       <a class="btn-primary" href="#" onclick="go(APP_REGISTER_URL); return false;">Start free trial</a>
@@ -535,22 +537,24 @@
   </nav>
 
   <!-- ── Hero ────────────────────────────────────────── -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-eyebrow">Family meal planning, simplified</div>
-      <h1 class="hero-heading">Dinner sorted.<br><em>Every week.</em></h1>
-      <p class="hero-sub">
-        Tell us about your family, add your recipes, and Stacy's Mom builds a personalised weekly meal plan and hands you the shopping list.
-      </p>
-      <div class="hero-actions">
-        <a class="btn-primary btn-lg" href="#" onclick="go(APP_REGISTER_URL); return false;">Start free trial</a>
-        <a class="btn-outline btn-lg" href="#pricing">See pricing ↓</a>
+  <div class="hero-wrap">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Family meal planning, simplified</div>
+        <h1 class="hero-heading">Dinner sorted.<br>Every week.</h1>
+        <p class="hero-sub">
+          Tell us about your family, add your recipes, and Stacy's Mom builds a personalised weekly meal plan and hands you the shopping list.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary btn-lg" href="#" onclick="go(APP_REGISTER_URL); return false;">Start free trial</a>
+          <a class="btn-outline btn-lg" href="#pricing">See pricing ↓</a>
+        </div>
+        <p class="hero-note">3 free meal plan generations. No credit card required.</p>
       </div>
-      <p class="hero-note">3 free meal plan generations. No credit card required.</p>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <div class="divider"></div>
+  <div class="divider" style="margin-top:0;"></div>
 
   <!-- ── How It Works ─────────────────────────────────── -->
   <section class="section" id="how-it-works">
@@ -588,8 +592,6 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
   <!-- ── Features ─────────────────────────────────────── -->
   <section class="features-section" id="features">
     <div class="section-inner">
@@ -610,8 +612,8 @@
         </div>
         <div class="feature-card reveal reveal-d2">
           <div class="feature-icon">🥦</div>
-          <div class="feature-title">Aviva Romm meal structure</div>
-          <p class="feature-desc">Plans built around the 3-vegetable-per-meal nutritional framework.</p>
+          <div class="feature-title">Nutritionally balanced meal bases</div>
+          <p class="feature-desc">Plans built around an evidence-based, vegetable-forward meal structure.</p>
         </div>
         <div class="feature-card reveal reveal-d3">
           <div class="feature-icon">📷</div>
@@ -633,11 +635,11 @@
   </section>
 
   <!-- ── Pricing ───────────────────────────────────────── -->
-  <section class="section" id="pricing">
+  <section class="section pricing-section" id="pricing">
     <div class="section-inner">
-      <p class="section-label reveal" style="text-align:center;">Pricing</p>
+      <p class="section-label reveal" style="display:block;text-align:center;">Pricing</p>
       <h2 class="section-title reveal reveal-d1" style="text-align:center;">Simple, transparent pricing.</h2>
-      <p class="section-sub reveal reveal-d2" style="text-align:center; margin: 0 auto 3rem;">Start free. Upgrade when you're ready.</p>
+      <p class="section-sub reveal reveal-d2" style="text-align:center;margin:0 auto 3rem;">Start free. Upgrade when you're ready.</p>
 
       <div class="pricing-grid">
         <!-- Free -->
@@ -650,9 +652,9 @@
             <li><span class="check">✓</span> 3 free meal plan generations</li>
             <li><span class="check">✓</span> Recipe library (up to 20 recipes)</li>
             <li><span class="check">✓</span> Basic shopping list</li>
-            <li class="muted"><span class="dash">✕</span> Household profiles</li>
-            <li class="muted"><span class="dash">✕</span> Fridge scan</li>
-            <li class="muted"><span class="dash">✕</span> Weekly emails</li>
+            <li class="muted"><span class="cross">✕</span> Household profiles</li>
+            <li class="muted"><span class="cross">✕</span> Fridge scan</li>
+            <li class="muted"><span class="cross">✕</span> Weekly emails</li>
           </ul>
           <a class="btn-outline" style="width:100%;text-align:center;display:block;" href="#" onclick="go(APP_REGISTER_URL); return false;">Start for free</a>
         </div>
@@ -670,19 +672,17 @@
             <li><span class="check">✓</span> Unlimited meal plan generations</li>
             <li><span class="check">✓</span> Unlimited recipe library</li>
             <li><span class="check">✓</span> Full household & allergy profiles</li>
-            <li><span class="check">✓</span> Aviva Romm 3-veg meal structure</li>
+            <li><span class="check">✓</span> Nutritionally balanced meal bases</li>
             <li><span class="check">✓</span> Fridge & pantry scan (AI Vision)</li>
             <li><span class="check">✓</span> Auto-ticked shopping list</li>
             <li><span class="check">✓</span> Weekly plan emails</li>
           </ul>
           <a class="btn-primary" style="width:100%;text-align:center;display:block;" href="#" onclick="go(APP_REGISTER_URL); return false;">Get started · R79/month</a>
-          <p style="font-size:0.75rem;color:var(--color-text-muted);text-align:center;margin-top:0.75rem;">Billed monthly · Cancel anytime · Powered by Paystack</p>
+          <p style="font-size:0.75rem;color:var(--color-faint);text-align:center;margin-top:0.75rem;">Billed monthly · Cancel anytime · Powered by Paystack</p>
         </div>
       </div>
     </div>
   </section>
-
-  <div class="divider"></div>
 
   <!-- ── CTA Banner ────────────────────────────────────── -->
   <section class="cta-section">
@@ -692,7 +692,7 @@
       <p class="section-sub reveal reveal-d2">Join families already planning smarter with Stacy's Mom. No credit card required to get started.</p>
       <div class="reveal reveal-d3" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
         <a class="btn-primary btn-lg" href="#" onclick="go(APP_REGISTER_URL); return false;">Start free trial</a>
-        <a class="btn-outline btn-lg" href="#how-it-works">See how it works</a>
+        <a class="btn-outline-white btn-lg" href="#how-it-works">See how it works</a>
       </div>
     </div>
   </section>
@@ -700,23 +700,19 @@
   <!-- ── Footer ────────────────────────────────────────── -->
   <footer class="footer">
     <div>
-      <div class="footer-logo">Stacy's <span>Mom</span></div>
+      <div class="footer-logo">Stacy's Mom</div>
       <div class="footer-tagline">Family meal planning, simplified.</div>
     </div>
-    <div class="footer-right">
+    <div>
       <div class="footer-copy">© 2025 Zenzi. All rights reserved.</div>
       <div class="footer-paystack">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="24" height="24" rx="4" fill="rgba(255,255,255,0.15)"/>
-          <path d="M7 8h10M7 12h10M7 16h6" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="rgba(255,255,255,0.12)"/><path d="M7 8h10M7 12h10M7 16h6" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
         Payments powered by Paystack
       </div>
     </div>
   </footer>
 
   <script>
-    /* ── Navigation helper ──────────────────────────── */
     function go(url) {
       if (!url || url === 'APP_REGISTER_URL' || url === 'APP_LOGIN_URL') {
         alert('App URL not configured yet.\n\nSwap APP_REGISTER_URL and APP_LOGIN_URL in the <script> block at the top of this file.');
@@ -725,7 +721,6 @@
       window.location.href = url;
     }
 
-    /* ── Scroll reveal ──────────────────────────────── */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
