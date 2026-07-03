@@ -516,7 +516,8 @@
     /* ── Responsive ────────────────────────────────────── */
     @media (max-width: 900px) {
       .nav { padding: 1rem 1.5rem; }
-      .nav-login { display: none; }
+      /* Keep "Log in" visible on mobile so returning users can get in */
+      .nav-login { padding: 0.45rem 0.5rem; }
       .hero-wrap { padding: 4.5rem 1.5rem 0; }
       .hero { padding: 4rem 1.5rem 3.5rem; }
       .section { padding: 4.5rem 1.5rem; }
@@ -542,10 +543,8 @@
   <!-- ── Nav ─────────────────────────────────────────── -->
   <nav class="nav">
     <div class="nav-logo">Stacy's Mom</div>
-    <div class="nav-actions">
-      <a class="nav-login" href="#" onclick="go(APP_LOGIN_URL); return false;">Log in</a>
-      <a class="btn-primary" href="#" onclick="go(APP_REGISTER_URL); return false;">Start free trial</a>
-    </div>
+    <a class="btn-primary" href="#" onclick="go(APP_REGISTER_URL); return false;">Start free trial</a>
+    <a class="nav-login" href="#" onclick="go(APP_LOGIN_URL); return false;">Log in</a>
   </nav>
 
   <!-- ── Hero ────────────────────────────────────────── -->
@@ -641,6 +640,84 @@
           <div class="feature-icon">📧</div>
           <div class="feature-title">Weekly plan emails</div>
           <p class="feature-desc">Receive your meal plan by email every week, ready to save or share.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Roadmap ──────────────────────────────────────── -->
+  <style>
+    .roadmap-section { background: #FFFFFF; }
+    .roadmap-desktop { max-width: 900px; margin: 0 auto; }
+    .roadmap-mobile  { display: none; }
+    .roadmap-cols    { display: flex; gap: 2rem; max-width: 640px; margin: 0 auto; text-align: left; }
+    .roadmap-col     { flex: 1; }
+    .roadmap-col h3  { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+    .roadmap-col ul  { list-style: none; margin: 0; padding: 0; }
+    .roadmap-col li  { font-size: 0.95rem; color: var(--color-heading); padding: 0.4rem 0; display: flex; gap: 0.55rem; align-items: baseline; }
+    @media (max-width: 900px) {
+      .roadmap-desktop { display: none; }
+      .roadmap-mobile  { display: block; }
+    }
+    @media (max-width: 480px) { .roadmap-cols { flex-direction: column; gap: 1.75rem; } }
+  </style>
+  <section class="section roadmap-section" id="roadmap">
+    <div class="section-inner">
+      <p class="section-label reveal" style="display:block;text-align:center;">The kitchen so far</p>
+      <h2 class="section-title reveal reveal-d1" style="text-align:center;">Always cooking up more</h2>
+      <p class="section-sub reveal reveal-d2" style="text-align:center;margin:0 auto 2.75rem;">New features land in your kitchen all the time.</p>
+
+      <!-- Desktop: winding journey -->
+      <div class="roadmap-desktop reveal reveal-d2">
+        <svg viewBox="0 0 1260 440" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;font-family:var(--font-ui);">
+          <title>Stacy's Mom roadmap</title>
+          <desc>Shipped features flowing along a winding path into upcoming ones.</desc>
+          <text x="345" y="70" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="2" fill="#2D5A3D">● COOKING NOW</text>
+          <text x="950" y="70" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="2" fill="#C1402A">○ COMING NEXT</text>
+          <path d="M70,300 C125,300 125,200 180,200 C235,200 235,300 290,300 C345,300 345,200 400,200 C455,200 455,300 510,300 C565,300 565,200 620,200" fill="none" stroke="#2D5A3D" stroke-width="4" stroke-linecap="round"/>
+          <path d="M620,200 C675,200 675,300 730,300 C785,300 785,200 840,200 C895,200 895,300 950,300 C1005,300 1005,200 1060,200 C1115,200 1115,300 1170,300" fill="none" stroke="#C1402A" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 12"/>
+          <g font-size="14" fill="#3D2B1E" text-anchor="middle" font-weight="700">
+            <circle cx="70" cy="300" r="15" fill="#2D5A3D"/><text x="70" y="305" fill="#fff">✓</text><text x="70" y="342">🍽️ Dinner plans</text>
+            <circle cx="180" cy="200" r="15" fill="#2D5A3D"/><text x="180" y="205" fill="#fff">✓</text><text x="180" y="170">👪 Household profiles</text>
+            <circle cx="290" cy="300" r="15" fill="#2D5A3D"/><text x="290" y="305" fill="#fff">✓</text><text x="290" y="342">📖 Save recipes</text>
+            <circle cx="400" cy="200" r="15" fill="#2D5A3D"/><text x="400" y="205" fill="#fff">✓</text><text x="400" y="170">🛒 Email shopping list</text>
+            <circle cx="510" cy="300" r="15" fill="#2D5A3D"/><text x="510" y="305" fill="#fff">✓</text><text x="510" y="342">📸 Fridge/pantry scan</text>
+            <circle cx="620" cy="200" r="15" fill="#2D5A3D"/><text x="620" y="205" fill="#fff">✓</text><text x="620" y="170">📝 Weekly notes</text>
+          </g>
+          <g font-size="14" fill="#8A6A64" text-anchor="middle" font-weight="700">
+            <circle cx="730" cy="300" r="15" fill="#FFFFFF" stroke="#C1402A" stroke-width="2.5"/><text x="730" y="342">✨ Pick a vibe</text>
+            <circle cx="840" cy="200" r="15" fill="#FFFFFF" stroke="#C1402A" stroke-width="2.5"/><text x="840" y="170">💚 Sensory-friendly</text>
+            <circle cx="950" cy="300" r="15" fill="#FFFFFF" stroke="#C1402A" stroke-width="2.5"/><text x="950" y="342">🌱 Learns your tastes</text>
+            <circle cx="1060" cy="200" r="15" fill="#FFFFFF" stroke="#C1402A" stroke-width="2.5"/><text x="1060" y="170">📲 WhatsApp plan</text>
+            <circle cx="1170" cy="300" r="15" fill="#FFFFFF" stroke="#C1402A" stroke-width="2.5"/><text x="1170" y="342">🤝 Share &amp; discover</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Mobile: stacked lists -->
+      <div class="roadmap-mobile">
+        <div class="roadmap-cols">
+          <div class="roadmap-col">
+            <h3 style="color:#2D5A3D;">● Cooking now</h3>
+            <ul>
+              <li>🍽️ Dinner plans</li>
+              <li>👪 Household profiles</li>
+              <li>📖 Save recipes</li>
+              <li>🛒 Email shopping list</li>
+              <li>📸 Fridge/pantry scan</li>
+              <li>📝 Weekly notes</li>
+            </ul>
+          </div>
+          <div class="roadmap-col">
+            <h3 style="color:#C1402A;">○ Coming next</h3>
+            <ul>
+              <li>✨ Pick a vibe</li>
+              <li>💚 Sensory-friendly plans</li>
+              <li>🌱 Learns your tastes</li>
+              <li>📲 WhatsApp your plan</li>
+              <li>🤝 Share &amp; discover</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
