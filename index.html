@@ -508,6 +508,78 @@
     .reveal-d3 { transition-delay: 0.3s; }
     .reveal-d4 { transition-delay: 0.4s; }
 
+    /* ── Sample Week (pre-auth hook) ───────────────────── */
+    .sample-section { padding: 5rem 3rem 6rem; }
+    .sample-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .sample-sub {
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      max-width: 460px;
+      margin: 0 auto 1.75rem;
+    }
+    .sample-toggle {
+      display: inline-flex;
+      gap: 0.25rem;
+      padding: 0.3rem;
+      background: #F4ECE4;
+      border-radius: var(--radius-pill);
+      margin: 0 auto 0.85rem;
+    }
+    .sample-toggle button {
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      padding: 0.55rem 1.2rem;
+      border-radius: var(--radius-pill);
+      background: transparent;
+      color: var(--color-muted);
+      transition: background var(--ease), color var(--ease);
+    }
+    .sample-toggle button[aria-pressed="true"] { background: var(--color-jungle); color: #fff; }
+    .sample-toggle button:focus-visible { outline: 2px solid var(--color-cta); outline-offset: 2px; }
+    .sample-freetag { font-size: 0.8rem; color: var(--color-muted); margin: 0 0 2rem; }
+    .sample-freetag strong { color: var(--color-jungle); font-weight: 700; }
+    .sample-week {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 460px;
+      margin: 0 auto;
+      text-align: left;
+      transition: opacity 0.2s var(--ease);
+    }
+    .sample-meal {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: #FEF0EE;
+      border: 1px solid #F0C8C0;
+      border-radius: 14px;
+      padding: 0.8rem 0.9rem;
+    }
+    .sample-meal .tile {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      background: #F8D0C8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .sample-day { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #A05048; margin: 0; }
+    .sample-name { font-size: 0.92rem; font-weight: 700; color: #7A2018; line-height: 1.3; margin: 0.12rem 0 0; }
+    .sample-meta { font-size: 0.72rem; color: var(--color-muted); margin: 0.2rem 0 0; }
+    .sample-cta-wrap { margin-top: 2rem; }
+    .sample-cta-sub { font-size: 0.78rem; color: var(--color-muted); margin-top: 0.7rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .sample-week { transition: none; }
+    }
+
     /* ── Animations ────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -565,6 +637,29 @@
       </div>
     </section>
   </div>
+
+  <!-- ── Sample Week (pre-auth hook) ──────────────────── -->
+  <section class="sample-section" id="sample-week">
+    <div class="sample-inner">
+      <p class="section-label reveal">This week, sorted</p>
+      <h2 class="section-title reveal reveal-d1" id="sampleHeading">Five veg-forward family dinners.</h2>
+      <p class="sample-sub reveal reveal-d2">Here's a real sample week. Tap your diet to make it fit, then sign up to make it yours.</p>
+
+      <div class="sample-toggle reveal reveal-d2" role="group" aria-label="Choose diet">
+        <button type="button" data-diet="normal" aria-pressed="true">Normal</button>
+        <button type="button" data-diet="vegetarian" aria-pressed="false">Vegetarian</button>
+        <button type="button" data-diet="vegan" aria-pressed="false">Vegan</button>
+      </div>
+      <p class="sample-freetag reveal reveal-d2">🌿 <strong>Sample week</strong> · no login · no cost</p>
+
+      <div class="sample-week" id="sampleWeek"></div>
+
+      <div class="sample-cta-wrap reveal reveal-d3">
+        <a class="btn-primary btn-lg" id="sampleCta" href="#" onclick="goWithDiet(); return false;">Make it yours →</a>
+        <p class="sample-cta-sub">Create a free account to set family size, allergies &amp; cuisines.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="divider" style="margin-top:0;"></div>
 
@@ -795,6 +890,84 @@
         return;
       }
       window.location.href = url;
+    }
+
+    /* ── Sample week: static plans, one per diet ───────── */
+    const SAMPLE = {
+      normal: {
+        heading: 'Five veg-forward family dinners.',
+        week: [
+          ['Mon', 'Lemon-herb roast chicken & veg', '🍋', '20 min prep · 40 min cook'],
+          ['Tue', 'Beef & broccoli stir-fry', '🥦', '15 min prep · 15 min cook'],
+          ['Wed', 'Chickpea & spinach curry', '🍛', '10 min prep · 25 min cook'],
+          ['Thu', 'Baked hake & sweet-potato mash', '🐟', '15 min prep · 30 min cook'],
+          ['Fri', 'Homemade beef burgers & slaw', '🍔', '20 min prep · 15 min cook'],
+        ],
+      },
+      vegetarian: {
+        heading: 'Five hearty vegetarian dinners.',
+        week: [
+          ['Mon', 'Halloumi & roast-veg traybake', '🧀', '15 min prep · 35 min cook'],
+          ['Tue', 'Spinach, feta & lentil stir-fry', '🥬', '15 min prep · 15 min cook'],
+          ['Wed', 'Chickpea & spinach curry', '🍛', '10 min prep · 25 min cook'],
+          ['Thu', 'Butternut & sage pasta', '🎃', '15 min prep · 25 min cook'],
+          ['Fri', 'Black-bean burgers & slaw', '🫘', '20 min prep · 15 min cook'],
+        ],
+      },
+      vegan: {
+        heading: 'Five plant-based family dinners.',
+        week: [
+          ['Mon', 'Roast-veg & tahini traybake', '🥗', '15 min prep · 35 min cook'],
+          ['Tue', 'Crispy tofu & vegetable stir-fry', '🌱', '15 min prep · 15 min cook'],
+          ['Wed', 'Chickpea & spinach curry', '🍛', '10 min prep · 25 min cook'],
+          ['Thu', 'Butternut & sage pasta (vegan)', '🎃', '15 min prep · 25 min cook'],
+          ['Fri', 'Black-bean burgers & slaw', '🫘', '20 min prep · 15 min cook'],
+        ],
+      },
+    };
+
+    let currentDiet = 'normal';
+    const weekEl = document.getElementById('sampleWeek');
+    const sampleHeadingEl = document.getElementById('sampleHeading');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function paintSample(diet) {
+      const data = SAMPLE[diet];
+      sampleHeadingEl.textContent = data.heading;
+      weekEl.innerHTML = data.week.map(([day, name, icon, meta]) => `
+        <div class="sample-meal">
+          <div class="tile" aria-hidden="true">${icon}</div>
+          <div>
+            <p class="sample-day">${day} dinner</p>
+            <p class="sample-name">${name}</p>
+            <p class="sample-meta">${meta}</p>
+          </div>
+        </div>`).join('');
+      weekEl.style.opacity = '1';
+    }
+
+    function renderSample(diet) {
+      if (prefersReduced) { paintSample(diet); return; }
+      weekEl.style.opacity = '0';
+      setTimeout(() => paintSample(diet), 130);
+    }
+
+    document.querySelectorAll('.sample-toggle button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        currentDiet = btn.dataset.diet;
+        document.querySelectorAll('.sample-toggle button')
+          .forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        renderSample(currentDiet);
+      });
+    });
+
+    paintSample('normal');
+
+    // Carry the chosen diet into signup. "normal" is the default (no restriction),
+    // so only veg/vegan add the query param the app reads.
+    function goWithDiet() {
+      const suffix = currentDiet && currentDiet !== 'normal' ? ('?diet=' + currentDiet) : '';
+      go(APP_REGISTER_URL + suffix);
     }
 
     const observer = new IntersectionObserver((entries) => {
