@@ -508,77 +508,105 @@
     .reveal-d3 { transition-delay: 0.3s; }
     .reveal-d4 { transition-delay: 0.4s; }
 
-    /* ── Sample Week (pre-auth hook) ───────────────────── */
+    /* ── Sample Week ───────────────────────────────────── */
     .sample-section { padding: 5rem 3rem 6rem; }
-    .sample-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-    .sample-sub {
-      font-size: 1rem;
-      color: var(--color-muted);
-      line-height: 1.7;
-      max-width: 460px;
-      margin: 0 auto 1.75rem;
-    }
-    .sample-toggle {
-      display: inline-flex;
-      gap: 0.25rem;
-      padding: 0.3rem;
-      background: #F4ECE4;
-      border-radius: var(--radius-pill);
-      margin: 0 auto 0.85rem;
-    }
-    .sample-toggle button {
-      font-family: var(--font-ui);
-      font-size: 0.9rem;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      padding: 0.55rem 1.2rem;
-      border-radius: var(--radius-pill);
-      background: transparent;
-      color: var(--color-muted);
-      transition: background var(--ease), color var(--ease);
-    }
+    .sample-header { text-align: center; max-width: 580px; margin: 0 auto 2.5rem; }
+    .sample-sub { font-size: 1rem; color: var(--color-muted); line-height: 1.7; max-width: 460px; margin: 0 auto 1.5rem; }
+    .sample-toggle { display: inline-flex; gap: 0.25rem; padding: 0.3rem; background: #F4ECE4; border-radius: var(--radius-pill); margin-bottom: 0.85rem; }
+    .sample-toggle button { font-family: var(--font-ui); font-size: 0.88rem; font-weight: 700; border: none; cursor: pointer; padding: 0.5rem 1.1rem; border-radius: var(--radius-pill); background: transparent; color: var(--color-muted); transition: background var(--ease), color var(--ease); }
     .sample-toggle button[aria-pressed="true"] { background: var(--color-jungle); color: #fff; }
     .sample-toggle button:focus-visible { outline: 2px solid var(--color-cta); outline-offset: 2px; }
-    .sample-freetag { font-size: 0.8rem; color: var(--color-muted); margin: 0 0 2rem; }
+    .sample-freetag { font-size: 0.8rem; color: var(--color-muted); }
     .sample-freetag strong { color: var(--color-jungle); font-weight: 700; }
-    .sample-week {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      max-width: 460px;
-      margin: 0 auto;
-      text-align: left;
-      transition: opacity 0.2s var(--ease);
-    }
-    .sample-meal {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      background: #FEF0EE;
-      border: 1px solid #F0C8C0;
-      border-radius: 14px;
-      padding: 0.8rem 0.9rem;
-    }
-    .sample-meal .tile {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      flex-shrink: 0;
-      background: #F8D0C8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-    }
-    .sample-day { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #A05048; margin: 0; }
-    .sample-name { font-size: 0.92rem; font-weight: 700; color: #7A2018; line-height: 1.3; margin: 0.12rem 0 0; }
-    .sample-meta { font-size: 0.72rem; color: var(--color-muted); margin: 0.2rem 0 0; }
-    .sample-cta-wrap { margin-top: 2rem; }
-    .sample-cta-sub { font-size: 0.78rem; color: var(--color-muted); margin-top: 0.7rem; }
-    @media (prefers-reduced-motion: reduce) {
-      .sample-week { transition: none; }
-    }
+    /* 2-col layout */
+    .sample-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; max-width: 880px; margin: 0 auto 2.5rem; }
+    /* Menu list */
+    .menu-item { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 0.85rem; border-radius: var(--radius-card); cursor: pointer; border: 1px solid transparent; transition: background var(--ease), border-color var(--ease); margin-bottom: 0.4rem; user-select: none; }
+    .menu-item:hover { background: #FEF0EE; border-color: #F0C8C0; }
+    .menu-item.active { background: #FEF0EE; border-color: var(--color-cta); }
+    .menu-tile { width: 40px; height: 40px; border-radius: 9px; background: #F8D0C8; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; transition: background var(--ease); }
+    .menu-item.active .menu-tile { background: rgba(193,64,42,0.15); }
+    .menu-text { flex: 1; min-width: 0; }
+    .menu-day { font-size: 0.58rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #A05048; }
+    .menu-name { font-size: 0.86rem; font-weight: 700; color: #7A2018; line-height: 1.25; margin-top: 0.08rem; }
+    .menu-time { font-size: 0.68rem; color: var(--color-muted); margin-top: 0.1rem; }
+    .menu-chevron { color: var(--color-faint); font-size: 0.7rem; flex-shrink: 0; transition: color var(--ease); }
+    .menu-item.active .menu-chevron { color: var(--color-cta); }
+    /* Recipe card stack */
+    .recipe-stack-col { position: relative; height: 460px; }
+    .recipe-card { position: absolute; left: 0; right: 0; top: 0; background: #fff; border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 28px rgba(61,43,30,0.09); transition: transform 0.4s cubic-bezier(.22,.68,0,1.15), opacity 0.35s ease; }
+    .recipe-card[data-pos="0"] { transform: translateY(0);  z-index: 5; opacity: 1; }
+    .recipe-card[data-pos="1"] { transform: translateY(18px); z-index: 4; opacity: 0.55; pointer-events: none; }
+    .recipe-card[data-pos="2"] { transform: translateY(32px); z-index: 3; opacity: 0.32; pointer-events: none; }
+    .recipe-card[data-pos="3"] { transform: translateY(44px); z-index: 2; opacity: 0.18; pointer-events: none; }
+    .recipe-card[data-pos="4"] { transform: translateY(54px); z-index: 1; opacity: 0.1;  pointer-events: none; }
+    .rc-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .rc-name { font-family: var(--font-heading); font-style: italic; font-size: 1.05rem; color: var(--color-heading); margin-bottom: 0.15rem; line-height: 1.2; }
+    .rc-meta { font-size: 0.72rem; color: var(--color-muted); margin-bottom: 0.85rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--color-border); }
+    .rc-section { font-size: 0.56rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-cta); margin: 0 0 0.4rem; }
+    .rc-ingredients { list-style: none; margin-bottom: 0.85rem; }
+    .rc-ingredients li { font-size: 0.78rem; color: var(--color-heading); padding: 0.16rem 0 0.16rem 0.85rem; position: relative; border-bottom: 1px solid #faf5f0; }
+    .rc-ingredients li::before { content: '·'; position: absolute; left: 0; color: var(--color-cta); font-weight: 800; }
+    .rc-method { list-style: none; counter-reset: rc; }
+    .rc-method li { counter-increment: rc; font-size: 0.78rem; color: var(--color-muted); padding: 0.2rem 0 0.2rem 1.35rem; position: relative; line-height: 1.5; }
+    .rc-method li::before { content: counter(rc); position: absolute; left: 0; font-weight: 800; font-size: 0.68rem; color: var(--color-cta); top: 0.28rem; }
+    .rc-cta { margin-top: 0.9rem; padding-top: 0.75rem; border-top: 1px solid var(--color-border); text-align: center; font-size: 0.75rem; color: var(--color-muted); }
+    .rc-cta a { color: var(--color-cta); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+    /* Mobile: single card panel below menu */
+    .mobile-recipe { display: none; background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 1.25rem; margin-top: 1.25rem; }
+    .sample-cta-wrap { text-align: center; }
+    .sample-cta-sub { font-size: 0.78rem; color: var(--color-muted); margin-top: 0.65rem; }
+
+    /* ── Inside Look ───────────────────────────────────── */
+    .inside-look { padding: 6rem 3rem; background: var(--color-hero-bg); }
+    .inside-look .section-label { color: var(--color-cta); }
+    .inside-look .section-title { color: var(--color-heading); }
+    .look-rows { max-width: 960px; margin: 3rem auto 0; }
+    .look-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
+    .look-row:last-child { margin-bottom: 0; }
+    .look-row.flip .look-mockup-wrap { order: -1; }
+    .look-step-label { font-size: 0.58rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-inactive); margin-bottom: 0.35rem; }
+    .look-title { font-family: var(--font-heading); font-style: italic; font-size: 1.35rem; color: var(--color-heading); margin-bottom: 0.55rem; }
+    .look-desc { font-size: 0.9rem; color: var(--color-muted); line-height: 1.7; margin-bottom: 1.2rem; }
+    .look-chips { display: flex; flex-direction: column; gap: 0.48rem; align-items: flex-start; }
+    .look-chip { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 600; color: var(--color-heading); background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 0.38rem 0.75rem; }
+    .look-chip::before { content: '→'; color: var(--color-cta); }
+    /* App screen mockup */
+    .app-screen { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 48px rgba(61,43,30,0.13); max-width: 290px; margin: 0 auto; border: 1px solid rgba(0,0,0,0.07); }
+    .as-nav { background: var(--color-jungle); padding: 0.55rem 0.8rem; display: flex; align-items: center; justify-content: space-between; }
+    .as-logo { font-family: var(--font-heading); font-style: italic; font-size: 0.78rem; color: rgba(255,255,255,0.95); }
+    .as-tabs { display: flex; gap: 0.2rem; }
+    .as-tab { font-size: 0.5rem; font-weight: 700; padding: 0.15rem 0.35rem; border-radius: 4px; color: rgba(255,255,255,0.45); }
+    .as-tab.on { color: #fff; background: rgba(255,255,255,0.18); }
+    .as-body { padding: 0.85rem 0.9rem; }
+    .as-h { font-family: var(--font-heading); font-style: italic; font-size: 0.9rem; color: var(--color-heading); margin-bottom: 0.65rem; }
+    .as-row { display: flex; align-items: center; justify-content: space-between; padding: 0.38rem 0; border-bottom: 1px solid #f4ede8; }
+    .as-lbl { font-size: 0.62rem; font-weight: 700; color: var(--color-heading); }
+    .as-val { font-size: 0.62rem; color: var(--color-muted); }
+    .as-step { display: flex; align-items: center; gap: 0.35rem; font-size: 0.62rem; }
+    .as-step b { font-size: 0.85rem; font-weight: 800; color: var(--color-heading); }
+    .as-days { display: flex; gap: 0.22rem; flex-wrap: wrap; padding: 0.38rem 0; }
+    .as-day { font-size: 0.5rem; font-weight: 800; padding: 0.18rem 0.36rem; border-radius: 4px; background: #f0ebe4; color: var(--color-muted); }
+    .as-day.on { background: var(--color-jungle); color: #fff; }
+    .as-inp { font-size: 0.6rem; color: var(--color-faint); background: #faf9f7; border: 1px solid var(--color-border); border-radius: 6px; padding: 0.4rem 0.55rem; width: 100%; margin: 0.28rem 0; }
+    .as-scan { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.28rem; }
+    .as-scan-lbl { font-size: 0.62rem; font-weight: 700; color: var(--color-heading); }
+    .as-scan-btn { font-size: 0.5rem; font-weight: 700; padding: 0.2rem 0.48rem; border-radius: 5px; background: #F4ECE4; color: var(--color-muted); border: 1px solid var(--color-border); }
+    .as-btn { background: var(--color-cta); color: #fff; font-size: 0.64rem; font-weight: 700; padding: 0.46rem; border-radius: var(--radius-pill); text-align: center; margin-top: 0.55rem; }
+    .as-recipe { background: #FEF0EE; border: 1px solid #F0C8C0; border-radius: 7px; padding: 0.45rem 0.58rem; margin-bottom: 0.26rem; display: flex; align-items: center; gap: 0.42rem; }
+    .as-r-ico { width: 26px; height: 26px; border-radius: 5px; background: #F8D0C8; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; flex-shrink: 0; }
+    .as-r-name { font-size: 0.63rem; font-weight: 700; color: #7A2018; }
+    .as-r-sub { font-size: 0.54rem; color: #A05048; }
+    .as-pill { font-size: 0.5rem; font-weight: 700; padding: 0.16rem 0.45rem; border-radius: var(--radius-pill); border: 1px solid var(--color-border); color: var(--color-muted); display: inline-block; margin: 0.12rem 0.1rem 0 0; }
+    .as-cat { font-size: 0.5rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted); margin: 0.5rem 0 0.22rem; }
+    .as-item { display: flex; align-items: center; gap: 0.4rem; padding: 0.26rem 0; border-bottom: 1px solid #f4ede8; }
+    .as-chk { width: 13px; height: 13px; border-radius: 3px; border: 1.5px solid var(--color-border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; }
+    .as-chk.on { background: var(--color-jungle); border-color: var(--color-jungle); color: #fff; }
+    .as-item-t { font-size: 0.63rem; color: var(--color-heading); }
+    .as-item-t.done { text-decoration: line-through; color: var(--color-faint); }
+    .as-meal { background: #FEF0EE; border: 1px solid #F0C8C0; border-radius: 6px; padding: 0.36rem 0.52rem; margin-bottom: 0.22rem; display: flex; align-items: center; gap: 0.4rem; }
+    .as-m-day { font-size: 0.5rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #A05048; width: 22px; flex-shrink: 0; }
+    .as-m-name { font-size: 0.62rem; font-weight: 700; color: #7A2018; }
 
     /* ── Animations ────────────────────────────────────── */
     @keyframes fadeUp {
@@ -603,6 +631,17 @@
       .footer { padding: 2.5rem 1.5rem; flex-direction: column; }
       .footer-copy { text-align: left; }
       .footer-links { flex-wrap: wrap; gap: 1rem; }
+      /* Sample week */
+      .sample-section { padding: 4.5rem 1.5rem 5rem; }
+      .sample-layout { grid-template-columns: 1fr; }
+      .recipe-stack-col { display: none; }
+      .mobile-recipe { display: block; }
+      /* Inside look */
+      .inside-look { padding: 4.5rem 1.5rem; }
+      .look-row { grid-template-columns: 1fr; gap: 2rem; }
+      .look-row.flip .look-mockup-wrap { order: unset; }
+      .look-row { margin-bottom: 3.5rem; }
+      .app-screen { max-width: 100%; }
     }
     @media (max-width: 560px) {
       .steps-grid { grid-template-columns: 1fr; }
@@ -638,21 +677,26 @@
     </section>
   </div>
 
-  <!-- ── Sample Week (pre-auth hook) ──────────────────── -->
+  <!-- ── Sample Week ──────────────────────────────────── -->
   <section class="sample-section" id="sample-week">
-    <div class="sample-inner">
-      <p class="section-label reveal">This week, sorted</p>
-      <h2 class="section-title reveal reveal-d1" id="sampleHeading">Five veg-forward family dinners.</h2>
-      <p class="sample-sub reveal reveal-d2">Here's a real sample week. Tap your diet to make it fit, then sign up to make it yours.</p>
-
-      <div class="sample-toggle reveal reveal-d2" role="group" aria-label="Choose diet">
-        <button type="button" data-diet="normal" aria-pressed="true">Normal</button>
-        <button type="button" data-diet="vegetarian" aria-pressed="false">Vegetarian</button>
-        <button type="button" data-diet="vegan" aria-pressed="false">Vegan</button>
+    <div class="section-inner" style="max-width:960px;">
+      <div class="sample-header">
+        <p class="section-label reveal">This week, sorted</p>
+        <h2 class="section-title reveal reveal-d1" id="sampleHeading">Five veg-forward family dinners.</h2>
+        <p class="sample-sub reveal reveal-d2">Here's a real sample week. Tap your diet to make it fit, then sign up to make it yours.</p>
+        <div class="sample-toggle reveal reveal-d2" role="group" aria-label="Choose diet">
+          <button type="button" data-diet="normal" aria-pressed="true">Normal</button>
+          <button type="button" data-diet="vegetarian" aria-pressed="false">Vegetarian</button>
+          <button type="button" data-diet="vegan" aria-pressed="false">Vegan</button>
+        </div>
+        <p class="sample-freetag reveal reveal-d2">🌿 <strong>Sample week</strong> · no login · no cost</p>
       </div>
-      <p class="sample-freetag reveal reveal-d2">🌿 <strong>Sample week</strong> · no login · no cost</p>
 
-      <div class="sample-week" id="sampleWeek"></div>
+      <div class="sample-layout reveal reveal-d3">
+        <div class="sample-menu-col" id="sampleMenu"></div>
+        <div class="recipe-stack-col" id="recipeStack"></div>
+      </div>
+      <div class="mobile-recipe" id="mobileRecipe"></div>
 
       <div class="sample-cta-wrap reveal reveal-d3">
         <a class="btn-primary btn-lg" id="sampleCta" href="#" onclick="goWithDiet(); return false;">Make it yours →</a>
@@ -698,6 +742,167 @@
       </div>
     </div>
   </section>
+
+  <!-- ── Inside Look ──────────────────────────────────── -->
+  <section class="inside-look" id="inside-look">
+    <div class="section-inner" style="max-width:1000px;">
+      <p class="section-label reveal" style="text-align:center;">Inside the app</p>
+      <h2 class="section-title reveal reveal-d1" style="text-align:center;">A closer look.</h2>
+      <p class="section-sub reveal reveal-d2" style="text-align:center;">Everything you need, exactly where you'd expect it.</p>
+
+      <div class="look-rows">
+
+        <!-- Row 1: My Kitchen -->
+        <div class="look-row reveal">
+          <div class="look-notes">
+            <p class="look-step-label">Step 01</p>
+            <h3 class="look-title">My Kitchen</h3>
+            <p class="look-desc">Tell us who's eating. Set your family size, dietary preferences, and how many nights a week you want a plan. Takes about two minutes.</p>
+            <div class="look-chips">
+              <span class="look-chip">How many people are you cooking for?</span>
+              <span class="look-chip">Any dietary needs or allergies?</span>
+              <span class="look-chip">How many nights this week?</span>
+            </div>
+          </div>
+          <div class="look-mockup-wrap">
+            <div class="app-screen">
+              <div class="as-nav">
+                <span class="as-logo">Stacy's Mom</span>
+                <div class="as-tabs">
+                  <span class="as-tab on">Kitchen</span>
+                  <span class="as-tab">Recipes</span>
+                  <span class="as-tab">Planner</span>
+                  <span class="as-tab">Shop</span>
+                </div>
+              </div>
+              <div class="as-body">
+                <p class="as-h">My Kitchen</p>
+                <div class="as-row"><span class="as-lbl">Family name</span><span class="as-val">The Proudfoots</span></div>
+                <div class="as-row"><span class="as-lbl">People</span><div class="as-step"><span>−</span><b>4</b><span>+</span></div></div>
+                <div class="as-row"><span class="as-lbl">Diet</span><div class="as-step" style="gap:0.4rem;"><span class="as-day on">Any</span><span class="as-day">Veg</span><span class="as-day">Vegan</span></div></div>
+                <div class="as-row" style="border:0;flex-direction:column;align-items:flex-start;gap:0.28rem;padding-top:0.45rem;">
+                  <span class="as-lbl">Dining nights</span>
+                  <div class="as-days">
+                    <span class="as-day on">Mon</span><span class="as-day on">Tue</span><span class="as-day on">Wed</span><span class="as-day on">Thu</span><span class="as-day on">Fri</span><span class="as-day">Sat</span><span class="as-day">Sun</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Recipes (flipped) -->
+        <div class="look-row flip reveal">
+          <div class="look-notes">
+            <p class="look-step-label">Step 02</p>
+            <h3 class="look-title">Your Recipe Library</h3>
+            <p class="look-desc">Add recipes your family already loves. Paste a URL, photograph a cookbook page, or type it in. Your whole repertoire in one place.</p>
+            <div class="look-chips">
+              <span class="look-chip">Import any recipe from any website</span>
+              <span class="look-chip">Photograph a cookbook page to import</span>
+              <span class="look-chip">Your family favourites, always at hand</span>
+            </div>
+          </div>
+          <div class="look-mockup-wrap">
+            <div class="app-screen">
+              <div class="as-nav">
+                <span class="as-logo">Stacy's Mom</span>
+                <div class="as-tabs">
+                  <span class="as-tab">Kitchen</span><span class="as-tab on">Recipes</span><span class="as-tab">Planner</span><span class="as-tab">Shop</span>
+                </div>
+              </div>
+              <div class="as-body">
+                <p class="as-h">My Recipes</p>
+                <div style="margin-bottom:0.55rem;">
+                  <span class="as-pill">+ From URL</span><span class="as-pill">+ Photo</span><span class="as-pill">+ Manual</span>
+                </div>
+                <div class="as-recipe"><div class="as-r-ico">🍋</div><div><div class="as-r-name">Lemon-herb roast chicken</div><div class="as-r-sub">45 min · Serves 4</div></div></div>
+                <div class="as-recipe"><div class="as-r-ico">🥦</div><div><div class="as-r-name">Beef &amp; broccoli stir-fry</div><div class="as-r-sub">30 min · Serves 4</div></div></div>
+                <div class="as-recipe"><div class="as-r-ico">🍛</div><div><div class="as-r-name">Chickpea &amp; spinach curry</div><div class="as-r-sub">35 min · Serves 4</div></div></div>
+                <div class="as-recipe" style="opacity:0.5;"><div class="as-r-ico">🐟</div><div><div class="as-r-name">Baked hake &amp; sweet-potato mash</div><div class="as-r-sub">45 min · Serves 4</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Meal Planner -->
+        <div class="look-row reveal">
+          <div class="look-notes">
+            <p class="look-step-label">Step 03</p>
+            <h3 class="look-title">Generate This Week's Plan</h3>
+            <p class="look-desc">Tell us what's in the fridge, scan your pantry, add a note about the week ahead. Hit generate. Your personalised plan is ready in seconds.</p>
+            <div class="look-chips">
+              <span class="look-chip">What have you got that needs using up?</span>
+              <span class="look-chip">Weather-aware suggestions built in</span>
+              <span class="look-chip">Any notes for the week? We listen.</span>
+            </div>
+          </div>
+          <div class="look-mockup-wrap">
+            <div class="app-screen">
+              <div class="as-nav">
+                <span class="as-logo">Stacy's Mom</span>
+                <div class="as-tabs">
+                  <span class="as-tab">Kitchen</span><span class="as-tab">Recipes</span><span class="as-tab on">Planner</span><span class="as-tab">Shop</span>
+                </div>
+              </div>
+              <div class="as-body">
+                <p class="as-h">Meal Planner</p>
+                <div class="as-scan"><span class="as-scan-lbl">Fridge / freezer</span><span class="as-scan-btn">📷 Scan</span></div>
+                <input class="as-inp" value="mince, spinach, leftover rice" readonly>
+                <div class="as-scan" style="margin-top:0.28rem;"><span class="as-scan-lbl">Pantry</span><span class="as-scan-btn">📷 Scan</span></div>
+                <input class="as-inp" value="pasta, tinned tomatoes, lentils" readonly>
+                <div style="margin-top:0.28rem;">
+                  <span class="as-scan-lbl">Notes for this week</span>
+                  <input class="as-inp" value="Keep it light — long week ahead" readonly style="margin-top:0.22rem;">
+                </div>
+                <div class="as-btn">Generate my plan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Shopping List (flipped) -->
+        <div class="look-row flip reveal">
+          <div class="look-notes">
+            <p class="look-step-label">Step 04</p>
+            <h3 class="look-title">Your Shopping List</h3>
+            <p class="look-desc">A list sorted by category, with pantry staples already ticked. Use it in the shop, or email it to yourself before you head out.</p>
+            <div class="look-chips">
+              <span class="look-chip">Tick items off as you walk the aisles</span>
+              <span class="look-chip">Delivered straight to your inbox</span>
+              <span class="look-chip">Pantry items pre-ticked automatically</span>
+            </div>
+          </div>
+          <div class="look-mockup-wrap">
+            <div class="app-screen">
+              <div class="as-nav">
+                <span class="as-logo">Stacy's Mom</span>
+                <div class="as-tabs">
+                  <span class="as-tab">Kitchen</span><span class="as-tab">Recipes</span><span class="as-tab">Planner</span><span class="as-tab on">Shop</span>
+                </div>
+              </div>
+              <div class="as-body">
+                <p class="as-h">Shopping List</p>
+                <p class="as-cat">Produce</p>
+                <div class="as-item"><div class="as-chk on">✓</div><span class="as-item-t done">Spinach (have it)</span></div>
+                <div class="as-item"><div class="as-chk"></div><span class="as-item-t">Broccoli · 1 head</span></div>
+                <div class="as-item"><div class="as-chk"></div><span class="as-item-t">Sweet potatoes · 4</span></div>
+                <p class="as-cat">Meat &amp; fish</p>
+                <div class="as-item"><div class="as-chk"></div><span class="as-item-t">Chicken thighs · 800g</span></div>
+                <div class="as-item"><div class="as-chk"></div><span class="as-item-t">Hake fillets · 4</span></div>
+                <p class="as-cat">Pantry</p>
+                <div class="as-item"><div class="as-chk on">✓</div><span class="as-item-t done">Pasta (in pantry)</span></div>
+                <div class="as-item"><div class="as-chk"></div><span class="as-item-t">Coconut milk · 1 tin</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /look-rows -->
+    </div>
+  </section>
+
+  <div class="divider"></div>
 
   <!-- ── Features ─────────────────────────────────────── -->
   <section class="features-section" id="features">
@@ -892,79 +1097,147 @@
       window.location.href = url;
     }
 
-    /* ── Sample week: static plans, one per diet ───────── */
+    /* ── Sample week: plans with full recipe cards ──────── */
     const SAMPLE = {
       normal: {
         heading: 'Five veg-forward family dinners.',
         week: [
-          ['Mon', 'Lemon-herb roast chicken & veg', '🍋', '20 min prep · 40 min cook'],
-          ['Tue', 'Beef & broccoli stir-fry', '🥦', '15 min prep · 15 min cook'],
-          ['Wed', 'Chickpea & spinach curry', '🍛', '10 min prep · 25 min cook'],
-          ['Thu', 'Baked hake & sweet-potato mash', '🐟', '15 min prep · 30 min cook'],
-          ['Fri', 'Homemade beef burgers & slaw', '🍔', '20 min prep · 15 min cook'],
+          { day: 'Mon', name: 'Lemon-herb roast chicken & veg', icon: '🍋', time: '20 min prep · 40 min cook · Serves 4',
+            ingredients: ['1 whole chicken', '3 garlic cloves, crushed', '1 lemon, zested & halved', 'Fresh thyme sprigs', '4 carrots, roughly chopped', '2 tbsp olive oil'],
+            method: ['Rub chicken with garlic, lemon zest and thyme. Season well and drizzle with oil.', 'Roast at 200°C with the carrots for 45 min until golden and cooked through.', 'Rest 10 min before carving. Spoon over the pan juices to serve.'] },
+          { day: 'Tue', name: 'Beef & broccoli stir-fry', icon: '🥦', time: '15 min prep · 15 min cook · Serves 4',
+            ingredients: ['500g beef strips', '1 head broccoli, cut into florets', '3 tbsp soy sauce', '1 tbsp sesame oil', '2 garlic cloves, minced', '1 tsp fresh ginger, grated'],
+            method: ['Toss beef in soy sauce and ginger. Leave to marinate for 10 min.', 'Stir-fry beef on high heat for 3 min until browned. Remove and set aside.', 'Fry garlic and broccoli 5 min, return beef, finish with sesame oil. Serve with rice.'] },
+          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 25 min cook · Serves 4',
+            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
+            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes and chickpeas, simmer 15 min.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
+          { day: 'Thu', name: 'Baked hake & sweet-potato mash', icon: '🐟', time: '15 min prep · 30 min cook · Serves 4',
+            ingredients: ['4 hake fillets', '4 sweet potatoes, peeled & cubed', '2 tbsp butter', '1 lemon, sliced', 'Fresh parsley', 'Salt & pepper'],
+            method: ['Boil sweet potato until soft. Drain and mash well with butter.', 'Season hake, lay on lemon slices and bake at 200°C for 15 min.', 'Serve hake over mash, scattered with fresh parsley.'] },
+          { day: 'Fri', name: 'Homemade beef burgers & slaw', icon: '🍔', time: '20 min prep · 15 min cook · Serves 4',
+            ingredients: ['500g beef mince', '½ cabbage, finely shredded', '1 carrot, grated', '3 tbsp mayo', '4 burger buns', '1 tsp mustard'],
+            method: ['Mix mince with salt and pepper. Shape into 4 even patties.', 'Combine cabbage, carrot, mayo and mustard to make the slaw.', 'Grill patties 4 min each side. Build burgers with slaw and any extras.'] },
         ],
       },
       vegetarian: {
         heading: 'Five hearty vegetarian dinners.',
         week: [
-          ['Mon', 'Halloumi & roast-veg traybake', '🧀', '15 min prep · 35 min cook'],
-          ['Tue', 'Spinach, feta & lentil stir-fry', '🥬', '15 min prep · 15 min cook'],
-          ['Wed', 'Chickpea & spinach curry', '🍛', '10 min prep · 25 min cook'],
-          ['Thu', 'Butternut & sage pasta', '🎃', '15 min prep · 25 min cook'],
-          ['Fri', 'Black-bean burgers & slaw', '🫘', '20 min prep · 15 min cook'],
+          { day: 'Mon', name: 'Halloumi & roast-veg traybake', icon: '🧀', time: '15 min prep · 35 min cook · Serves 4',
+            ingredients: ['250g halloumi, sliced', '2 courgettes, chunked', '1 red pepper, chunked', '1 red onion, cut into wedges', '2 tbsp olive oil', '1 tsp smoked paprika'],
+            method: ['Toss veg in olive oil and paprika. Spread on a large roasting tray.', 'Roast at 200°C for 25 min, then nestle halloumi slices on top.', 'Roast a further 10 min until halloumi is golden. Serve with crusty bread.'] },
+          { day: 'Tue', name: 'Spinach, feta & lentil stir-fry', icon: '🥬', time: '15 min prep · 15 min cook · Serves 4',
+            ingredients: ['1 tin green lentils, drained', '200g baby spinach', '100g feta, crumbled', '2 garlic cloves', '1 lemon, juiced', '2 tbsp olive oil'],
+            method: ['Heat oil in a wide pan, add garlic and fry 1 min until fragrant.', 'Add lentils and spinach, toss until spinach wilts, about 5 min.', 'Season with lemon juice, serve topped with crumbled feta.'] },
+          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 25 min cook · Serves 4',
+            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
+            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes and chickpeas, simmer 15 min.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
+          { day: 'Thu', name: 'Butternut & sage pasta', icon: '🎃', time: '15 min prep · 25 min cook · Serves 4',
+            ingredients: ['400g penne pasta', '1 butternut, peeled & cubed', '10 fresh sage leaves', '3 tbsp butter', '50g parmesan, grated', '1 garlic clove'],
+            method: ['Roast butternut at 200°C for 20 min until tender and caramelised.', 'Cook pasta. Fry sage in butter until crisp, add garlic for 1 min.', 'Toss pasta with butternut, sage butter and parmesan. Season well.'] },
+          { day: 'Fri', name: 'Black-bean burgers & slaw', icon: '🫘', time: '20 min prep · 15 min cook · Serves 4',
+            ingredients: ['2 tins black beans, drained', '½ cup breadcrumbs', '1 egg', '½ cabbage, finely shredded', '3 tbsp mayo', '4 burger buns'],
+            method: ['Mash beans, mix with breadcrumbs and egg. Shape into 4 patties.', 'Pan-fry over medium heat, 4 min each side until golden and firm.', 'Toss slaw with mayo. Assemble burgers and serve.'] },
         ],
       },
       vegan: {
         heading: 'Five plant-based family dinners.',
         week: [
-          ['Mon', 'Roast-veg & tahini traybake', '🥗', '15 min prep · 35 min cook'],
-          ['Tue', 'Crispy tofu & vegetable stir-fry', '🌱', '15 min prep · 15 min cook'],
-          ['Wed', 'Chickpea & spinach curry', '🍛', '10 min prep · 25 min cook'],
-          ['Thu', 'Butternut & sage pasta (vegan)', '🎃', '15 min prep · 25 min cook'],
-          ['Fri', 'Black-bean burgers & slaw', '🫘', '20 min prep · 15 min cook'],
+          { day: 'Mon', name: 'Roast-veg & tahini traybake', icon: '🥗', time: '15 min prep · 35 min cook · Serves 4',
+            ingredients: ['2 courgettes, chunked', '1 red pepper, chunked', '1 sweet potato, cubed', '3 tbsp tahini', '1 lemon, juiced', '2 tbsp olive oil'],
+            method: ['Toss veg in olive oil and seasoning. Roast at 200°C for 30 min.', 'Whisk tahini with lemon juice and a splash of water until smooth.', 'Drizzle dressing over roasted veg. Serve with warm flatbread.'] },
+          { day: 'Tue', name: 'Crispy tofu & vegetable stir-fry', icon: '🌱', time: '15 min prep · 20 min cook · Serves 4',
+            ingredients: ['400g firm tofu, cubed', '1 head broccoli', '1 carrot, julienned', '3 tbsp soy sauce', '1 tbsp sesame oil', '1 tsp fresh ginger'],
+            method: ['Press tofu dry, toss in soy sauce. Bake at 200°C for 20 min until crispy.', 'Stir-fry broccoli and carrot with ginger over high heat, 5 min.', 'Combine with tofu, finish with sesame oil. Serve over noodles or rice.'] },
+          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 25 min cook · Serves 4',
+            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
+            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes and chickpeas, simmer 15 min.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
+          { day: 'Thu', name: 'Butternut & sage pasta (vegan)', icon: '🎃', time: '15 min prep · 25 min cook · Serves 4',
+            ingredients: ['400g penne pasta', '1 butternut, peeled & cubed', '10 fresh sage leaves', '3 tbsp olive oil', '2 tbsp nutritional yeast', '1 garlic clove'],
+            method: ['Roast butternut at 200°C for 20 min until tender.', 'Cook pasta. Fry sage in olive oil until crisp, add garlic for 1 min.', 'Toss pasta with butternut, sage oil and nutritional yeast.'] },
+          { day: 'Fri', name: 'Black-bean burgers & slaw', icon: '🫘', time: '20 min prep · 15 min cook · Serves 4',
+            ingredients: ['2 tins black beans, drained', '½ cup breadcrumbs', '1 tbsp ground flaxseed + 3 tbsp water', '½ cabbage, finely shredded', '3 tbsp vegan mayo', '4 burger buns'],
+            method: ['Mix flaxseed and water, leave 5 min to gel. Mash beans, add crumbs and flax egg.', 'Form 4 patties. Pan-fry over medium heat, 4 min each side.', 'Toss slaw with vegan mayo. Assemble and serve.'] },
         ],
       },
     };
 
     let currentDiet = 'normal';
-    const weekEl = document.getElementById('sampleWeek');
+    let activeIdx = 0;
+    const menuEl  = document.getElementById('sampleMenu');
+    const stackEl = document.getElementById('recipeStack');
+    const mobileRecipeEl = document.getElementById('mobileRecipe');
     const sampleHeadingEl = document.getElementById('sampleHeading');
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function paintSample(diet) {
+    function buildCardHTML(meal) {
+      return `
+        <div class="rc-icon">${meal.icon}</div>
+        <div class="rc-name">${meal.name}</div>
+        <div class="rc-meta">${meal.time}</div>
+        <p class="rc-section">Ingredients</p>
+        <ul class="rc-ingredients">${meal.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
+        <p class="rc-section">Method</p>
+        <ol class="rc-method">${meal.method.map(s => `<li>${s}</li>`).join('')}</ol>
+        <div class="rc-cta">Want this plan personalised for your family? <a href="#" onclick="goWithDiet(); return false;">Sign up free →</a></div>`;
+    }
+
+    function paintSample(diet, idx) {
+      idx = idx !== undefined ? idx : 0;
       const data = SAMPLE[diet];
       sampleHeadingEl.textContent = data.heading;
-      weekEl.innerHTML = data.week.map(([day, name, icon, meta]) => `
-        <div class="sample-meal">
-          <div class="tile" aria-hidden="true">${icon}</div>
-          <div>
-            <p class="sample-day">${day} dinner</p>
-            <p class="sample-name">${name}</p>
-            <p class="sample-meta">${meta}</p>
+
+      menuEl.innerHTML = data.week.map((meal, i) => `
+        <div class="menu-item${i === idx ? ' active' : ''}" data-idx="${i}" role="button" tabindex="0" aria-label="${meal.day}: ${meal.name}">
+          <div class="menu-tile">${meal.icon}</div>
+          <div class="menu-text">
+            <div class="menu-day">${meal.day} dinner</div>
+            <div class="menu-name">${meal.name}</div>
+            <div class="menu-time">${meal.time.split('·').slice(0,2).join('·').trim()}</div>
           </div>
+          <span class="menu-chevron">›</span>
         </div>`).join('');
-      weekEl.style.opacity = '1';
+
+      stackEl.innerHTML = data.week.map((meal, i) => {
+        const pos = ((i - idx) + 5) % 5;
+        return `<div class="recipe-card" data-pos="${pos}" data-idx="${i}">${buildCardHTML(meal)}</div>`;
+      }).join('');
+
+      mobileRecipeEl.innerHTML = buildCardHTML(data.week[idx]);
+
+      menuEl.querySelectorAll('.menu-item').forEach(item => {
+        const activate = () => {
+          activeIdx = parseInt(item.dataset.idx);
+          paintSample(currentDiet, activeIdx);
+        };
+        item.addEventListener('click', activate);
+        item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+      });
     }
 
-    function renderSample(diet) {
-      if (prefersReduced) { paintSample(diet); return; }
-      weekEl.style.opacity = '0';
-      setTimeout(() => paintSample(diet), 130);
+    function renderSample(diet, idx) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { paintSample(diet, idx); return; }
+      menuEl.style.opacity = '0';
+      stackEl.style.opacity = '0';
+      mobileRecipeEl.style.opacity = '0';
+      setTimeout(() => {
+        paintSample(diet, idx);
+        menuEl.style.opacity = '';
+        stackEl.style.opacity = '';
+        mobileRecipeEl.style.opacity = '';
+      }, 130);
     }
 
-    document.querySelectorAll('.sample-toggle button').forEach((btn) => {
+    document.querySelectorAll('.sample-toggle button').forEach(btn => {
       btn.addEventListener('click', () => {
         currentDiet = btn.dataset.diet;
+        activeIdx = 0;
         document.querySelectorAll('.sample-toggle button')
-          .forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-        renderSample(currentDiet);
+          .forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+        renderSample(currentDiet, 0);
       });
     });
 
-    paintSample('normal');
+    paintSample('normal', 0);
 
-    // Carry the chosen diet into signup. "normal" is the default (no restriction),
-    // so only veg/vegan add the query param the app reads.
     function goWithDiet() {
       const suffix = currentDiet && currentDiet !== 'normal' ? ('?diet=' + currentDiet) : '';
       go(APP_REGISTER_URL + suffix);
