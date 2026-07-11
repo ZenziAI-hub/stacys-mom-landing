@@ -532,14 +532,14 @@
     .menu-time { font-size: 0.68rem; color: var(--color-muted); margin-top: 0.1rem; }
     .menu-chevron { color: var(--color-faint); font-size: 0.7rem; flex-shrink: 0; transition: color var(--ease); }
     .menu-item.active .menu-chevron { color: var(--color-cta); }
-    /* Recipe card stack */
-    .recipe-stack-col { position: relative; height: 460px; }
-    .recipe-card { position: absolute; left: 0; right: 0; top: 0; background: #fff; border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 28px rgba(61,43,30,0.09); transition: transform 0.4s cubic-bezier(.22,.68,0,1.15), opacity 0.35s ease; }
-    .recipe-card[data-pos="0"] { transform: translateY(0);  z-index: 5; opacity: 1; }
-    .recipe-card[data-pos="1"] { transform: translateY(18px); z-index: 4; opacity: 0.55; pointer-events: none; }
-    .recipe-card[data-pos="2"] { transform: translateY(32px); z-index: 3; opacity: 0.32; pointer-events: none; }
-    .recipe-card[data-pos="3"] { transform: translateY(44px); z-index: 2; opacity: 0.18; pointer-events: none; }
-    .recipe-card[data-pos="4"] { transform: translateY(54px); z-index: 1; opacity: 0.1;  pointer-events: none; }
+    /* Recipe card stack — fan layout */
+    .recipe-stack-col { position: relative; height: 520px; overflow: visible; }
+    .recipe-card { position: absolute; left: 0; right: 0; bottom: 0; background: #fff; border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 28px rgba(61,43,30,0.09); transition: transform 0.4s cubic-bezier(.22,.68,0,1.15), opacity 0.35s ease; transform-origin: 50% 100%; }
+    .recipe-card[data-pos="0"] { transform: rotate(0deg);   z-index: 5; opacity: 1; }
+    .recipe-card[data-pos="1"] { transform: rotate(6deg);   z-index: 4; opacity: 0.72; pointer-events: none; }
+    .recipe-card[data-pos="2"] { transform: rotate(12deg);  z-index: 3; opacity: 0.50; pointer-events: none; }
+    .recipe-card[data-pos="3"] { transform: rotate(-12deg); z-index: 2; opacity: 0.50; pointer-events: none; }
+    .recipe-card[data-pos="4"] { transform: rotate(-6deg);  z-index: 1; opacity: 0.72; pointer-events: none; }
     .rc-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
     .rc-name { font-family: var(--font-heading); font-style: italic; font-size: 1.05rem; color: var(--color-heading); margin-bottom: 0.15rem; line-height: 1.2; }
     .rc-meta { font-size: 0.72rem; color: var(--color-muted); margin-bottom: 0.85rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--color-border); }
@@ -878,34 +878,34 @@
 
       <div class="features-grid">
         <div class="feature-card reveal">
-          <div class="feature-icon">♾️</div>
-          <div class="feature-title">Unlimited meal plan generation</div>
-          <p class="feature-desc">Generate as many weekly plans as you need. No caps, no waiting.</p>
+          <div class="feature-icon">🍽️</div>
+          <div class="feature-title">No more "what's for dinner?" You already know.</div>
+          <p class="feature-desc">A personalised five-dinner plan lands every week, built around your family.</p>
         </div>
         <div class="feature-card reveal reveal-d1">
-          <div class="feature-icon">👨‍👩‍👧</div>
-          <div class="feature-title">Household & allergy profiles</div>
-          <p class="feature-desc">Set dietary restrictions and preferences per family member.</p>
+          <div class="feature-icon">🛒</div>
+          <div class="feature-title">One shopping list. Tick items off as you go.</div>
+          <p class="feature-desc">Generated from the plan, checked against your pantry. Shop once, nothing forgotten.</p>
         </div>
         <div class="feature-card reveal reveal-d2">
-          <div class="feature-icon">🥦</div>
-          <div class="feature-title">Nutritionally balanced meal bases</div>
-          <p class="feature-desc">Plans built around an evidence-based, vegetable-forward meal structure.</p>
+          <div class="feature-icon">👨‍👩‍👧</div>
+          <div class="feature-title">Allergies and fussy eaters sorted before the plan is built.</div>
+          <p class="feature-desc">Set restrictions per family member. Every meal works for everyone at your table.</p>
         </div>
         <div class="feature-card reveal reveal-d3">
-          <div class="feature-icon">📷</div>
-          <div class="feature-title">Fridge & pantry scan</div>
-          <p class="feature-desc">Photograph your fridge and our AI reads what you already have.</p>
+          <div class="feature-icon">📚</div>
+          <div class="feature-title">Your family favourites, plus new ones you'd like to try.</div>
+          <p class="feature-desc">Build a recipe library from your own collection and anything you find online.</p>
         </div>
         <div class="feature-card reveal reveal-d4">
-          <div class="feature-icon">✅</div>
-          <div class="feature-title">Auto-ticked shopping list</div>
-          <p class="feature-desc">Pantry ingredients are automatically crossed off your shopping list.</p>
+          <div class="feature-icon">📷</div>
+          <div class="feature-title">Fridge and pantry staples scanned and taken into account.</div>
+          <p class="feature-desc">Photograph what you have. The plan uses it so nothing goes to waste.</p>
         </div>
         <div class="feature-card reveal reveal-d1">
-          <div class="feature-icon">📧</div>
-          <div class="feature-title">Weekly plan emails</div>
-          <p class="feature-desc">Receive your meal plan by email every week, ready to save or share.</p>
+          <div class="feature-icon">🌤️</div>
+          <div class="feature-title">Weather-aware suggestions. Yes, really.</div>
+          <p class="feature-desc">A warm soup on a cold Tuesday. A light stir-fry when it's 34°C. Details matter.</p>
         </div>
       </div>
     </div>
@@ -1068,60 +1068,60 @@
         heading: 'Five veg-forward family dinners.',
         week: [
           { day: 'Mon', name: 'Lemon-herb roast chicken & veg', icon: '🍋', time: '20 min prep · 45 min cook · Serves 4',
-            ingredients: ['1 whole chicken', '3 garlic cloves, crushed', '1 lemon, zested & halved', 'Fresh thyme sprigs', '2 courgettes, chunked · 1 red pepper, chunked · 3 carrots, sliced', '2 tbsp olive oil'],
-            method: ['Rub chicken all over with garlic, lemon zest, thyme and oil. Season well.', 'Roast at 200°C surrounded by the courgettes, pepper and carrots for 45 min.', 'Rest 10 min before carving. Toss the roasted veg in the pan juices to serve.'] },
+            ingredients: ['1 whole chicken', '3 garlic cloves, crushed', '1 lemon, zested & halved', 'Fresh thyme sprigs', '2 courgettes, chunked', '1 red pepper, chunked', '3 carrots, roughly sliced', '1 head broccoli, cut into florets', '2 tbsp olive oil'],
+            method: ['Rub chicken all over with garlic, lemon zest, thyme and oil. Season well.', 'Roast at 200°C surrounded by the courgettes, pepper, carrots and broccoli for 45 min.', 'Rest 10 min before carving. Toss the roasted veg in the pan juices to serve.'] },
           { day: 'Tue', name: 'Beef & broccoli stir-fry', icon: '🥦', time: '15 min prep · 15 min cook · Serves 4',
-            ingredients: ['500g beef strips', '1 head broccoli, cut into florets', '3 tbsp soy sauce', '1 tbsp sesame oil', '2 garlic cloves, minced', '1 tsp fresh ginger, grated'],
-            method: ['Toss beef in soy sauce and ginger. Leave to marinate for 10 min.', 'Stir-fry beef on high heat for 3 min until browned. Remove and set aside.', 'Fry garlic and broccoli 5 min, return beef, finish with sesame oil. Serve with rice.'] },
-          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 25 min cook · Serves 4',
-            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
-            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes and chickpeas, simmer 15 min.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
+            ingredients: ['500g beef strips', '1 head broccoli, cut into florets', '1 cup snap peas', '3 tbsp soy sauce', '1 tbsp sesame oil', '2 garlic cloves, minced', '1 tsp fresh ginger, grated'],
+            method: ['Toss beef in soy sauce and ginger. Leave to marinate for 10 min.', 'Stir-fry beef on high heat for 3 min until browned. Remove and set aside.', 'Fry garlic, broccoli and snap peas 5 min, return beef, finish with sesame oil. Serve with rice.'] },
+          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 30 min cook · Serves 4',
+            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 sweet potato, peeled & cubed', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
+            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes, sweet potato and chickpeas, simmer 20 min until potato is tender.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
           { day: 'Thu', name: 'Baked hake & sweet-potato mash', icon: '🐟', time: '15 min prep · 30 min cook · Serves 4',
-            ingredients: ['4 hake fillets', '4 sweet potatoes, peeled & cubed', '2 tbsp butter', '1 lemon, sliced', 'Fresh parsley', 'Salt & pepper'],
-            method: ['Boil sweet potato until soft. Drain and mash well with butter.', 'Season hake, lay on lemon slices and bake at 200°C for 15 min.', 'Serve hake over mash, scattered with fresh parsley.'] },
+            ingredients: ['4 hake fillets', '4 sweet potatoes, peeled & cubed', '200g green beans, trimmed', '2 tbsp butter', '1 lemon, sliced', 'Fresh parsley', 'Salt & pepper'],
+            method: ['Boil sweet potato until soft. Drain and mash well with butter.', 'Season hake, lay on lemon slices and bake at 200°C for 15 min. Steam green beans alongside.', 'Serve hake over mash with beans, scattered with fresh parsley.'] },
           { day: 'Fri', name: 'Homemade beef burgers & slaw', icon: '🍔', time: '20 min prep · 15 min cook · Serves 4',
-            ingredients: ['500g beef mince', '½ cabbage, finely shredded', '1 carrot, grated', '3 tbsp mayo', '4 burger buns', '1 tsp mustard'],
-            method: ['Mix mince with salt and pepper. Shape into 4 even patties.', 'Combine cabbage, carrot, mayo and mustard to make the slaw.', 'Grill patties 4 min each side. Build burgers with slaw and any extras.'] },
+            ingredients: ['500g beef mince', '½ cabbage, finely shredded', '1 carrot, grated', '1 avocado, sliced', '3 tbsp mayo', '4 burger buns', '1 tsp mustard'],
+            method: ['Mix mince with salt and pepper. Shape into 4 even patties.', 'Combine cabbage, carrot, mayo and mustard to make the slaw.', 'Grill patties 4 min each side. Build burgers with slaw and fresh avocado.'] },
         ],
       },
       vegetarian: {
         heading: 'Five hearty vegetarian dinners.',
         week: [
           { day: 'Mon', name: 'Halloumi & roast-veg traybake', icon: '🧀', time: '15 min prep · 35 min cook · Serves 4',
-            ingredients: ['250g halloumi, sliced', '2 courgettes, chunked', '1 red pepper, chunked', '1 red onion, cut into wedges', '2 tbsp olive oil', '1 tsp smoked paprika'],
+            ingredients: ['250g halloumi, sliced', '2 courgettes, chunked', '1 red pepper, chunked', '200g cherry tomatoes', '1 red onion, cut into wedges', '2 tbsp olive oil', '1 tsp smoked paprika'],
             method: ['Toss veg in olive oil and paprika. Spread on a large roasting tray.', 'Roast at 200°C for 25 min, then nestle halloumi slices on top.', 'Roast a further 10 min until halloumi is golden. Serve with crusty bread.'] },
           { day: 'Tue', name: 'Spinach, feta & lentil stir-fry', icon: '🥬', time: '15 min prep · 15 min cook · Serves 4',
-            ingredients: ['1 tin green lentils, drained', '200g baby spinach', '100g feta, crumbled', '2 garlic cloves', '1 lemon, juiced', '2 tbsp olive oil'],
-            method: ['Heat oil in a wide pan, add garlic and fry 1 min until fragrant.', 'Add lentils and spinach, toss until spinach wilts, about 5 min.', 'Season with lemon juice, serve topped with crumbled feta.'] },
-          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 25 min cook · Serves 4',
-            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
-            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes and chickpeas, simmer 15 min.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
+            ingredients: ['1 tin green lentils, drained', '200g baby spinach', '2 ripe tomatoes, roughly chopped', '100g feta, crumbled', '2 garlic cloves', '1 lemon, juiced', '2 tbsp olive oil'],
+            method: ['Heat oil in a wide pan, add garlic and fry 1 min until fragrant.', 'Add lentils, tomatoes and spinach, toss until spinach wilts, about 5 min.', 'Season with lemon juice, serve topped with crumbled feta.'] },
+          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 30 min cook · Serves 4',
+            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 sweet potato, peeled & cubed', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
+            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes, sweet potato and chickpeas, simmer 20 min until potato is tender.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
           { day: 'Thu', name: 'Butternut & sage pasta', icon: '🎃', time: '15 min prep · 25 min cook · Serves 4',
-            ingredients: ['400g penne pasta', '1 butternut, peeled & cubed', '10 fresh sage leaves', '3 tbsp butter', '50g parmesan, grated', '1 garlic clove'],
-            method: ['Roast butternut at 200°C for 20 min until tender and caramelised.', 'Cook pasta. Fry sage in butter until crisp, add garlic for 1 min.', 'Toss pasta with butternut, sage butter and parmesan. Season well.'] },
+            ingredients: ['400g penne pasta', '1 butternut, peeled & cubed', '2 handfuls kale, roughly torn', '10 fresh sage leaves', '3 tbsp butter', '50g parmesan, grated', '1 garlic clove'],
+            method: ['Roast butternut at 200°C for 20 min until tender and caramelised.', 'Cook pasta. Fry sage in butter until crisp, add garlic for 1 min. Wilt kale in the same pan.', 'Toss pasta with butternut, kale, sage butter and parmesan. Season well.'] },
           { day: 'Fri', name: 'Black-bean burgers & slaw', icon: '🫘', time: '20 min prep · 15 min cook · Serves 4',
-            ingredients: ['2 tins black beans, drained', '½ cup breadcrumbs', '1 egg', '½ cabbage, finely shredded', '3 tbsp mayo', '4 burger buns'],
-            method: ['Mash beans, mix with breadcrumbs and egg. Shape into 4 patties.', 'Pan-fry over medium heat, 4 min each side until golden and firm.', 'Toss slaw with mayo. Assemble burgers and serve.'] },
+            ingredients: ['2 tins black beans, drained', '½ cup breadcrumbs', '1 egg', '½ cabbage, finely shredded', '1 avocado, sliced', '3 tbsp mayo', '4 burger buns'],
+            method: ['Mash beans, mix with breadcrumbs and egg. Shape into 4 patties.', 'Pan-fry over medium heat, 4 min each side until golden and firm.', 'Toss slaw with mayo. Assemble burgers with slaw and fresh avocado.'] },
         ],
       },
       vegan: {
         heading: 'Five plant-based family dinners.',
         week: [
           { day: 'Mon', name: 'Roast-veg & tahini traybake', icon: '🥗', time: '15 min prep · 35 min cook · Serves 4',
-            ingredients: ['2 courgettes, chunked', '1 red pepper, chunked', '1 sweet potato, cubed', '3 tbsp tahini', '1 lemon, juiced', '2 tbsp olive oil'],
-            method: ['Toss veg in olive oil and seasoning. Roast at 200°C for 30 min.', 'Whisk tahini with lemon juice and a splash of water until smooth.', 'Drizzle dressing over roasted veg. Serve with warm flatbread.'] },
+            ingredients: ['2 courgettes, chunked', '1 red pepper, chunked', '1 sweet potato, cubed', '1 aubergine, cubed', '3 tbsp tahini', '1 lemon, juiced', '2 tbsp olive oil'],
+            method: ['Toss veg in olive oil and seasoning. Roast at 200°C for 35 min until caramelised.', 'Whisk tahini with lemon juice and a splash of water until smooth.', 'Drizzle dressing over roasted veg. Serve with warm flatbread.'] },
           { day: 'Tue', name: 'Crispy tofu & vegetable stir-fry', icon: '🌱', time: '15 min prep · 20 min cook · Serves 4',
-            ingredients: ['400g firm tofu, cubed', '1 head broccoli', '1 carrot, julienned', '3 tbsp soy sauce', '1 tbsp sesame oil', '1 tsp fresh ginger'],
-            method: ['Press tofu dry, toss in soy sauce. Bake at 200°C for 20 min until crispy.', 'Stir-fry broccoli and carrot with ginger over high heat, 5 min.', 'Combine with tofu, finish with sesame oil. Serve over noodles or rice.'] },
-          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 25 min cook · Serves 4',
-            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
-            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes and chickpeas, simmer 15 min.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
+            ingredients: ['400g firm tofu, cubed', '1 head broccoli, cut into florets', '1 carrot, julienned', '1 cup snap peas', '3 tbsp soy sauce', '1 tbsp sesame oil', '1 tsp fresh ginger'],
+            method: ['Press tofu dry, toss in soy sauce. Bake at 200°C for 20 min until crispy.', 'Stir-fry broccoli, carrot and snap peas with ginger over high heat, 5 min.', 'Combine with tofu, finish with sesame oil. Serve over noodles or rice.'] },
+          { day: 'Wed', name: 'Chickpea & spinach curry', icon: '🍛', time: '10 min prep · 30 min cook · Serves 4',
+            ingredients: ['2 tins chickpeas, drained', '200g baby spinach', '1 sweet potato, peeled & cubed', '1 tin chopped tomatoes', '1 onion, diced', '2 tsp curry powder', '1 tin coconut milk'],
+            method: ['Sauté onion with curry powder until soft, about 5 min.', 'Add tomatoes, sweet potato and chickpeas, simmer 20 min until potato is tender.', 'Stir in spinach and coconut milk. Season and serve over rice.'] },
           { day: 'Thu', name: 'Butternut & sage pasta (vegan)', icon: '🎃', time: '15 min prep · 25 min cook · Serves 4',
-            ingredients: ['400g penne pasta', '1 butternut, peeled & cubed', '10 fresh sage leaves', '3 tbsp olive oil', '2 tbsp nutritional yeast', '1 garlic clove'],
-            method: ['Roast butternut at 200°C for 20 min until tender.', 'Cook pasta. Fry sage in olive oil until crisp, add garlic for 1 min.', 'Toss pasta with butternut, sage oil and nutritional yeast.'] },
+            ingredients: ['400g penne pasta', '1 butternut, peeled & cubed', '2 handfuls kale, roughly torn', '10 fresh sage leaves', '3 tbsp olive oil', '2 tbsp nutritional yeast', '1 garlic clove'],
+            method: ['Roast butternut at 200°C for 20 min until tender.', 'Cook pasta. Fry sage in olive oil until crisp, add garlic for 1 min. Wilt kale in the same pan.', 'Toss pasta with butternut, kale, sage oil and nutritional yeast.'] },
           { day: 'Fri', name: 'Black-bean burgers & slaw', icon: '🫘', time: '20 min prep · 15 min cook · Serves 4',
-            ingredients: ['2 tins black beans, drained', '½ cup breadcrumbs', '1 tbsp ground flaxseed + 3 tbsp water', '½ cabbage, finely shredded', '3 tbsp vegan mayo', '4 burger buns'],
-            method: ['Mix flaxseed and water, leave 5 min to gel. Mash beans, add crumbs and flax egg.', 'Form 4 patties. Pan-fry over medium heat, 4 min each side.', 'Toss slaw with vegan mayo. Assemble and serve.'] },
+            ingredients: ['2 tins black beans, drained', '½ cup breadcrumbs', '1 tbsp ground flaxseed + 3 tbsp water', '½ cabbage, finely shredded', '1 avocado, sliced', '3 tbsp vegan mayo', '4 burger buns'],
+            method: ['Mix flaxseed and water, leave 5 min to gel. Mash beans, add crumbs and flax egg.', 'Form 4 patties. Pan-fry over medium heat, 4 min each side.', 'Toss slaw with vegan mayo. Assemble with slaw and fresh avocado.'] },
         ],
       },
     };
