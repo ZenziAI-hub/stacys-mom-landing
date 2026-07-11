@@ -1032,6 +1032,62 @@
     </div>
   </section>
 
+  <!-- ── About ────────────────────────────────────────── -->
+  <style>
+    .about-section { background: var(--color-surface); }
+    .about-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.7fr; gap: 4.5rem; align-items: center; }
+    .about-image-wrap {
+      border-radius: 20px; overflow: hidden; aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #1e3d2a 0%, var(--color-jungle) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-jungle); background: rgba(45,90,61,0.1);
+      border-radius: 20px; padding: 0.3rem 0.9rem; margin-bottom: 1.25rem;
+    }
+    .about-name { font-size: 2rem; font-style: italic; font-family: 'Playfair Display', serif; color: var(--color-heading); margin: 0 0 1.25rem; line-height: 1.2; }
+    .about-body { font-size: 1.02rem; line-height: 1.8; color: #6B5147; }
+    .about-body p { margin: 0 0 1rem; }
+    .about-body p:last-child { margin: 0; }
+    @media (max-width: 800px) {
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-image-wrap { aspect-ratio: 4/3; max-width: 280px; margin: 0 auto; }
+    }
+  </style>
+  <section class="section about-section" id="about">
+    <div class="section-inner about-inner">
+      <div class="about-image-wrap reveal">
+        <!-- Swap this SVG for your silhouette photo: <img src="jesse-silhouette.jpg" alt="Jesse with her two daughters"> -->
+        <svg viewBox="0 0 160 230" fill="rgba(255,255,255,0.18)" xmlns="http://www.w3.org/2000/svg" style="width:70%;max-width:130px">
+          <!-- mom -->
+          <circle cx="80" cy="36" r="21"/>
+          <ellipse cx="80" cy="19" rx="13" ry="9"/>
+          <path d="M56 58 C56 54 104 54 104 58 L115 168 L45 168 Z"/>
+          <path d="M58 76 L32 122 L43 127 L66 92"/>
+          <path d="M102 76 L128 122 L117 127 L94 92"/>
+          <!-- child left (age 2, shorter) -->
+          <circle cx="30" cy="138" r="11"/>
+          <path d="M17 152 C17 149 43 149 43 152 L47 200 L13 200 Z"/>
+          <!-- child right (age 3, slightly taller) -->
+          <circle cx="130" cy="132" r="13"/>
+          <path d="M114 148 C114 145 146 145 146 148 L150 200 L110 200 Z"/>
+        </svg>
+      </div>
+      <div class="reveal reveal-d1">
+        <span class="about-tag">The founder</span>
+        <h2 class="about-name">I'm Jesse.</h2>
+        <div class="about-body">
+          <p>I have a 2-year-old and a 3-year-old, which means I've recently lived through two under two. It was a phase. We don't discuss it.</p>
+          <p>On a Monday about a year ago I added up how long I'd spent planning that week's dinners. An hour and a half. For five meals. Checking what we had, writing the list, second-guessing, Googling "easy dinners that aren't the same eight things I rotate every week." Every single Monday.</p>
+          <p>I built Stacy's Mom to take it off my plate. Properly — not just fast. The kind of dinners that actually cover the veg, mix up the proteins, and don't make you feel like you've been phoning it in. A few friends asked for access. Then their friends. So here we are.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Roadmap ──────────────────────────────────────── -->
   <style>
     .roadmap-section { background: #FFFFFF; }
