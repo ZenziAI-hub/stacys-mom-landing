@@ -796,6 +796,9 @@
         </div>
         <p class="hero-note">3 free weekly plans (about 3 weeks of dinners). No credit card required.</p>
       </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;line-height:0;pointer-events:none;z-index:1;">
+        <svg viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:32px;display:block;"><path d="M0 32 L0 24 Q18 0 36 24 Q54 0 72 24 Q90 0 108 24 Q126 0 144 24 Q162 0 180 24 Q198 0 216 24 Q234 0 252 24 Q270 0 288 24 Q306 0 324 24 Q342 0 360 24 Q378 0 396 24 Q414 0 432 24 Q450 0 468 24 Q486 0 504 24 Q522 0 540 24 Q558 0 576 24 Q594 0 612 24 Q630 0 648 24 Q666 0 684 24 Q702 0 720 24 Q738 0 756 24 Q774 0 792 24 Q810 0 828 24 Q846 0 864 24 Q882 0 900 24 Q918 0 936 24 Q954 0 972 24 Q990 0 1008 24 Q1026 0 1044 24 Q1062 0 1080 24 Q1098 0 1116 24 Q1134 0 1152 24 Q1170 0 1188 24 Q1206 0 1224 24 Q1242 0 1260 24 Q1278 0 1296 24 Q1314 0 1332 24 Q1350 0 1368 24 Q1386 0 1404 24 Q1422 0 1440 24 L1440 32 Z" fill="#FFFFFF"/></svg>
+      </div>
     </section>
   </div>
 
@@ -991,21 +994,38 @@
 
   <!-- ── Testimonials ─────────────────────────────────── -->
   <style>
-    .testimonials-section { background: #F4ECE4; }
-    .tscroll-wrap { position: relative; }
+    .testimonials-section { background: #F4ECE4; position: relative; overflow: hidden; }
+    .testimonials-section::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.15em;
+      left: -0.05em;
+      font-family: 'Playfair Display', serif;
+      font-size: 28vw;
+      line-height: 1;
+      color: rgba(193,64,42,0.07);
+      pointer-events: none;
+      user-select: none;
+    }
+    .tscroll-wrap {
+      position: relative;
+      margin-left: -3rem;
+      margin-right: -3rem;
+    }
     .tscroll-wrap::after {
       content: '';
       position: absolute;
       right: 0; top: 0; bottom: 0;
-      width: 80px;
+      width: 120px;
       background: linear-gradient(to right, transparent, #F4ECE4);
       pointer-events: none;
+      z-index: 2;
     }
     .tscroll {
       display: flex;
       overflow-x: auto;
       gap: 1.5rem;
-      padding: 0.5rem 0 2.5rem;
+      padding: 0.5rem 3rem 2.5rem;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
@@ -1017,9 +1037,11 @@
       width: 275px;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.75rem;
       scroll-snap-align: start;
+      transition: transform 0.25s ease;
     }
+    .tcard:hover { transform: rotate(0deg) !important; }
     .tcard-bubble {
       background: #fff;
       border-radius: 18px;
@@ -1055,38 +1077,71 @@
       line-height: 1.5;
       color: #fff;
     }
+    .tcard-identity {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding-left: 16px;
+    }
+    .tcard-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 800;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+      color: #fff;
+    }
     .tcard-name {
-      padding-left: 24px;
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #8A6A64;
     }
+    @media (max-width: 900px) {
+      .tscroll-wrap { margin-left: -1.5rem; margin-right: -1.5rem; }
+      .tscroll { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
   </style>
   <section class="section testimonials-section" id="testimonials">
-    <div class="section-inner">
+    <div class="section-inner" style="padding-bottom: 0.5rem;">
       <p class="section-label reveal">What they said</p>
-      <div class="tscroll-wrap">
-        <div class="tscroll reveal reveal-d1">
-          <div class="tcard">
-            <div class="tcard-bubble"><p class="tcard-quote">"Honestly the meals sound fab, takes the 'wtf am I gna make' away without me having to search the whole of Pinterest to try a dodgy recipe."</p></div>
+    </div>
+    <div class="tscroll-wrap">
+      <div class="tscroll reveal reveal-d1">
+        <div class="tcard" style="transform: rotate(-1.8deg);">
+          <div class="tcard-bubble"><p class="tcard-quote">"Honestly the meals sound fab, takes the 'wtf am I gna make' away without me having to search the whole of Pinterest to try a dodgy recipe."</p></div>
+          <div class="tcard-identity">
+            <div class="tcard-avatar" style="background:#C1402A;">NH</div>
             <span class="tcard-name">Nicol H.</span>
           </div>
-          <div class="tcard">
-            <div class="tcard-bubble"><p class="tcard-quote">"We're having such an exciting time with the app. We've been making different meals most nights, not just defaulting to chicken schnitzels and mash like we usually do."</p></div>
+        </div>
+        <div class="tcard" style="transform: rotate(2.1deg);">
+          <div class="tcard-bubble"><p class="tcard-quote">"We're having such an exciting time with the app. We've been making different meals most nights, not just defaulting to chicken schnitzels and mash like we usually do."</p></div>
+          <div class="tcard-identity">
+            <div class="tcard-avatar" style="background:#2D5A3D;">CC</div>
             <span class="tcard-name">Camilla C.</span>
           </div>
-          <div class="tcard">
-            <div class="tcard-bubble"><p class="tcard-quote">"It adds what I want to eat and uses up the items I already have. Amazing."</p></div>
+        </div>
+        <div class="tcard" style="transform: rotate(-1.1deg);">
+          <div class="tcard-bubble"><p class="tcard-quote">"It adds what I want to eat and uses up the items I already have. Amazing."</p></div>
+          <div class="tcard-identity">
+            <div class="tcard-avatar" style="background:#7B5EA7;">SV</div>
             <span class="tcard-name">Sarah V.</span>
           </div>
-          <div class="tcard tcard--featured">
-            <div class="tcard-bubble"><p class="tcard-quote">"It did not break."</p></div>
-            <span class="tcard-name">Tara E.</span>
+        </div>
+        <div class="tcard tcard--featured" style="transform: rotate(2.5deg);">
+          <div class="tcard-bubble"><p class="tcard-quote">"It did not break."</p></div>
+          <div class="tcard-identity">
+            <div class="tcard-avatar" style="background:rgba(255,255,255,0.25); color:#fff;">TE</div>
+            <span class="tcard-name" style="color:rgba(255,255,255,0.7);">Tara E.</span>
           </div>
-          <div class="tcard">
-            <div class="tcard-bubble"><p class="tcard-quote">"Quick and easy to use."</p></div>
+        </div>
+        <div class="tcard" style="transform: rotate(-1.5deg);">
+          <div class="tcard-bubble"><p class="tcard-quote">"Quick and easy to use."</p></div>
+          <div class="tcard-identity">
+            <div class="tcard-avatar" style="background:#8A6A64;">EK</div>
             <span class="tcard-name">Evert K.</span>
           </div>
         </div>
@@ -1140,7 +1195,7 @@
 
   <!-- ── About ────────────────────────────────────────── -->
   <style>
-    .about-section { background: var(--color-hero-bg); }
+    .about-section { background: var(--color-hero-bg); position: relative; overflow: hidden; }
     .about-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.7fr; gap: 4.5rem; align-items: center; }
     .about-image-wrap {
       border-radius: 20px; overflow: hidden; aspect-ratio: 3/4;
@@ -1193,6 +1248,9 @@
           <p class="about-signoff">Built with love, from one completely done woman to another.</p>
         </div>
       </div>
+    </div>
+    <div style="position:absolute;bottom:0;left:0;right:0;line-height:0;pointer-events:none;z-index:1;">
+      <svg viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:32px;display:block;"><path d="M0 32 L0 24 Q18 0 36 24 Q54 0 72 24 Q90 0 108 24 Q126 0 144 24 Q162 0 180 24 Q198 0 216 24 Q234 0 252 24 Q270 0 288 24 Q306 0 324 24 Q342 0 360 24 Q378 0 396 24 Q414 0 432 24 Q450 0 468 24 Q486 0 504 24 Q522 0 540 24 Q558 0 576 24 Q594 0 612 24 Q630 0 648 24 Q666 0 684 24 Q702 0 720 24 Q738 0 756 24 Q774 0 792 24 Q810 0 828 24 Q846 0 864 24 Q882 0 900 24 Q918 0 936 24 Q954 0 972 24 Q990 0 1008 24 Q1026 0 1044 24 Q1062 0 1080 24 Q1098 0 1116 24 Q1134 0 1152 24 Q1170 0 1188 24 Q1206 0 1224 24 Q1242 0 1260 24 Q1278 0 1296 24 Q1314 0 1332 24 Q1350 0 1368 24 Q1386 0 1404 24 Q1422 0 1440 24 L1440 32 Z" fill="#FFFFFF"/></svg>
     </div>
   </section>
 
