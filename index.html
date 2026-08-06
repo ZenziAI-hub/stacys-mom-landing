@@ -991,19 +991,19 @@
 
   <!-- ── Testimonials ─────────────────────────────────── -->
   <style>
-    .testimonials-section { background: #F4ECE4; position: relative; }
-    .testimonials-section::before {
-      content: '\201D';
+    .testimonials-section { background: #F4ECE4; position: relative; overflow: hidden; }
+    .tquote {
       position: absolute;
-      bottom: -0.15em;
-      right: -0.05em;
       font-family: 'Playfair Display', serif;
-      font-size: 28vw;
+      font-size: clamp(180px, 22vw, 380px);
       line-height: 1;
-      color: rgba(193,64,42,0.07);
+      color: rgba(193,64,42,0.08);
       pointer-events: none;
       user-select: none;
+      z-index: 0;
     }
+    .tquote--open  { top: -0.12em;    left:  -0.05em; }
+    .tquote--close { bottom: -0.12em; right: -0.05em; }
     .tscroll-wrap {
       position: relative;
       margin-left: -3rem;
@@ -1099,10 +1099,12 @@
     }
   </style>
   <section class="section testimonials-section" id="testimonials">
-    <div class="section-inner" style="padding-bottom: 0.5rem;">
+    <div class="tquote tquote--open" aria-hidden="true">&#8220;</div>
+    <div class="tquote tquote--close" aria-hidden="true">&#8221;</div>
+    <div class="section-inner" style="padding-bottom: 0.5rem; position: relative; z-index: 1;">
       <p class="section-label reveal">What they said</p>
     </div>
-    <div class="tscroll-wrap">
+    <div class="tscroll-wrap" style="position: relative; z-index: 1;">
       <div class="tscroll reveal reveal-d1">
         <div class="tcard">
           <div class="tcard-bubble"><p class="tcard-quote">"Honestly the meals sound fab, takes the 'wtf am I gna make' away without me having to search the whole of Pinterest to try a dodgy recipe."</p></div>
