@@ -989,6 +989,97 @@
     </div>
   </section>
 
+  <!-- ── Testimonials ─────────────────────────────────── -->
+  <style>
+    .testimonials-section { background: var(--color-surface); }
+    .tscroll-wrap { position: relative; }
+    .tscroll-wrap::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 0; bottom: 2rem;
+      width: 80px;
+      background: linear-gradient(to right, transparent, var(--color-surface));
+      pointer-events: none;
+    }
+    .tscroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 1.25rem;
+      padding: 0.5rem 0 2rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .tscroll::-webkit-scrollbar { display: none; }
+    .tcard {
+      flex-shrink: 0;
+      width: 290px;
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+    .tcard--featured {
+      background: var(--color-jungle);
+      border-color: var(--color-jungle);
+      width: 240px;
+    }
+    .tcard-quote {
+      font-size: 0.97rem;
+      line-height: 1.72;
+      color: var(--color-heading);
+    }
+    .tcard--featured .tcard-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.5;
+      color: #fff;
+    }
+    .tcard-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #8A6A64;
+    }
+    .tcard--featured .tcard-name { color: rgba(255,255,255,0.5); }
+  </style>
+  <section class="section testimonials-section" id="testimonials">
+    <div class="section-inner">
+      <p class="section-label reveal">What they said</p>
+      <div class="tscroll-wrap">
+        <div class="tscroll reveal reveal-d1">
+          <div class="tcard">
+            <p class="tcard-quote">"Honestly the meals sound fab, takes the 'wtf am I gna make' away without me having to search the whole of Pinterest to try a dodgy recipe."</p>
+            <span class="tcard-name">Nicol H.</span>
+          </div>
+          <div class="tcard">
+            <p class="tcard-quote">"We're having such an exciting time with the app. We've been making different meals most nights, not just defaulting to chicken schnitzels and mash like we usually do."</p>
+            <span class="tcard-name">Camilla C.</span>
+          </div>
+          <div class="tcard">
+            <p class="tcard-quote">"It adds what I want to eat and uses up the items I already have. Amazing."</p>
+            <span class="tcard-name">Sarah V.</span>
+          </div>
+          <div class="tcard tcard--featured">
+            <p class="tcard-quote">"It did not break."</p>
+            <span class="tcard-name">Tara E.</span>
+          </div>
+          <div class="tcard">
+            <p class="tcard-quote">"Quick and easy to use."</p>
+            <span class="tcard-name">Evert K.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="divider"></div>
 
   <!-- ── Features ─────────────────────────────────────── -->
