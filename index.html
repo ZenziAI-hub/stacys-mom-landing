@@ -996,7 +996,7 @@
     .tscroll-wrap::after {
       content: '';
       position: absolute;
-      right: 0; top: 0; bottom: 2rem;
+      right: 0; top: 0; bottom: 0;
       width: 80px;
       background: linear-gradient(to right, transparent, #F4ECE4);
       pointer-events: none;
@@ -1004,51 +1004,65 @@
     .tscroll {
       display: flex;
       overflow-x: auto;
-      gap: 1.25rem;
-      padding: 0.5rem 0 2rem;
+      gap: 1.5rem;
+      padding: 0.5rem 0 2.5rem;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      align-items: flex-start;
     }
     .tscroll::-webkit-scrollbar { display: none; }
     .tcard {
       flex-shrink: 0;
-      width: 290px;
-      background: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      scroll-snap-align: start;
+      width: 275px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 1.25rem;
+      gap: 0.85rem;
+      scroll-snap-align: start;
     }
-    .tcard--featured {
+    .tcard-bubble {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.4rem 1.5rem;
+      position: relative;
+      box-shadow: 0 2px 16px rgba(61,43,30,0.07);
+    }
+    .tcard-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 24px;
+      width: 0; height: 0;
+      border-left: 14px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 11px solid #fff;
+    }
+    .tcard--featured .tcard-bubble {
       background: var(--color-jungle);
-      border-color: var(--color-jungle);
-      width: 240px;
+      box-shadow: 0 2px 20px rgba(45,90,61,0.25);
     }
+    .tcard--featured .tcard-bubble::after { border-top-color: var(--color-jungle); }
     .tcard-quote {
       font-size: 0.97rem;
       line-height: 1.72;
       color: var(--color-heading);
+      margin: 0;
     }
     .tcard--featured .tcard-quote {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       line-height: 1.5;
       color: #fff;
     }
     .tcard-name {
+      padding-left: 24px;
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #8A6A64;
     }
-    .tcard--featured .tcard-name { color: rgba(255,255,255,0.5); }
   </style>
   <section class="section testimonials-section" id="testimonials">
     <div class="section-inner">
@@ -1056,23 +1070,23 @@
       <div class="tscroll-wrap">
         <div class="tscroll reveal reveal-d1">
           <div class="tcard">
-            <p class="tcard-quote">"Honestly the meals sound fab, takes the 'wtf am I gna make' away without me having to search the whole of Pinterest to try a dodgy recipe."</p>
+            <div class="tcard-bubble"><p class="tcard-quote">"Honestly the meals sound fab, takes the 'wtf am I gna make' away without me having to search the whole of Pinterest to try a dodgy recipe."</p></div>
             <span class="tcard-name">Nicol H.</span>
           </div>
           <div class="tcard">
-            <p class="tcard-quote">"We're having such an exciting time with the app. We've been making different meals most nights, not just defaulting to chicken schnitzels and mash like we usually do."</p>
+            <div class="tcard-bubble"><p class="tcard-quote">"We're having such an exciting time with the app. We've been making different meals most nights, not just defaulting to chicken schnitzels and mash like we usually do."</p></div>
             <span class="tcard-name">Camilla C.</span>
           </div>
           <div class="tcard">
-            <p class="tcard-quote">"It adds what I want to eat and uses up the items I already have. Amazing."</p>
+            <div class="tcard-bubble"><p class="tcard-quote">"It adds what I want to eat and uses up the items I already have. Amazing."</p></div>
             <span class="tcard-name">Sarah V.</span>
           </div>
           <div class="tcard tcard--featured">
-            <p class="tcard-quote">"It did not break."</p>
+            <div class="tcard-bubble"><p class="tcard-quote">"It did not break."</p></div>
             <span class="tcard-name">Tara E.</span>
           </div>
           <div class="tcard">
-            <p class="tcard-quote">"Quick and easy to use."</p>
+            <div class="tcard-bubble"><p class="tcard-quote">"Quick and easy to use."</p></div>
             <span class="tcard-name">Evert K.</span>
           </div>
         </div>
