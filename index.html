@@ -50,14 +50,8 @@
         ],
         "offers": {
           "@type": "Offer",
-          "price": "89",
-          "priceCurrency": "ZAR",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "89",
-            "priceCurrency": "ZAR",
-            "unitText": "MONTH"
-          }
+          "price": "0",
+          "priceCurrency": "ZAR"
         },
         "audience": {
           "@type": "Audience",
@@ -81,7 +75,7 @@
             "name": "What is the best meal planning app for South African families?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Stacy's Mom is a meal planning app built specifically for South African families. It generates a personalised five-dinner weekly plan, produces a shopping list in rands, and supports South African ingredients and dietary needs. Plans start free and cost R89 per month for unlimited use."
+              "text": "Stacy's Mom is a meal planning app built specifically for South African families. It generates a personalised five-dinner weekly plan, produces a shopping list in rands, and supports South African ingredients and dietary needs. It is free to use."
             }
           },
           {
@@ -105,7 +99,7 @@
             "name": "I am exhausted from deciding what to cook for dinner every night. What can help?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Decision fatigue around family meals is one of the most common forms of invisible mental load. Stacy's Mom was built by a South African mom for exactly this problem. It takes the deciding off your plate: tell it your family's preferences, allergies, and what is in your fridge, and it handles the rest. A full week of personalised dinners and a ready-to-use shopping list, generated in under two minutes. The app costs R89 per month, with 3 free plans to start."
+              "text": "Decision fatigue around family meals is one of the most common forms of invisible mental load. Stacy's Mom was built by a South African mom for exactly this problem. It takes the deciding off your plate: tell it your family's preferences, allergies, and what is in your fridge, and it handles the rest. A full week of personalised dinners and a ready-to-use shopping list, generated in under two minutes. It is free to use."
             }
           },
           {
@@ -121,7 +115,7 @@
             "name": "How much does Stacy's Mom cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Stacy's Mom offers 3 free weekly plans (roughly 3 weeks of dinners) with no credit card required. The Pro plan is R89 per month and includes unlimited plan generation, shopping lists, fridge scanning, and all features."
+              "text": "Stacy's Mom is free to use. Sign up, tell it about your family, and get your first week of dinners and a shopping list in minutes. No credit card required."
             }
           },
           {
@@ -483,7 +477,7 @@
       line-height: 1.6;
     }
 
-    /* ── Pricing ───────────────────────────────────────── */
+    /* ── Pricing (commented out — free tier, reinstate if paid plan returns) ──
     .pricing-section { background: var(--color-hero-bg); }
     .pricing-section .section-label { color: var(--color-cta); }
     .pricing-section .section-title { color: var(--color-heading); }
@@ -559,6 +553,7 @@
       line-height: 1.5;
     }
     .pricing-features li .check { color: var(--color-jungle); font-size: 0.9rem; flex-shrink: 0; margin-top: 0.05rem; }
+    ── end pricing CSS ── */
 
     /* ── CTA Banner ────────────────────────────────────── */
     .cta-section {
@@ -609,14 +604,6 @@
       transition: color var(--ease);
     }
     .footer-links a:hover { color: rgba(255,255,255,0.8); }
-    .footer-paystack {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.25);
-      margin-top: 0.35rem;
-    }
 
     /* ── Scroll reveal ─────────────────────────────────── */
     .reveal {
@@ -792,9 +779,8 @@
         </p>
         <div class="hero-actions">
           <a class="btn-primary btn-lg" href="#" onclick="go(APP_REGISTER_URL); return false;">Start free trial</a>
-          <a class="btn-outline btn-lg" href="#pricing">See pricing ↓</a>
         </div>
-        <p class="hero-note">3 free weekly plans (about 3 weeks of dinners). No credit card required.</p>
+        <p class="hero-note">Free. No credit card required.</p>
       </div>
     </section>
   </div>
@@ -1137,9 +1123,9 @@
   <!-- ── Features ─────────────────────────────────────── -->
   <section class="features-section" id="features">
     <div class="section-inner">
-      <p class="section-label reveal">What's included in Pro</p>
+      <p class="section-label reveal">What's included</p>
       <h2 class="section-title reveal reveal-d1">Less planning.<br>Better dinners.</h2>
-      <p class="section-sub reveal reveal-d2">R89/month. Every feature included. Cancel anytime.</p>
+      <p class="section-sub reveal reveal-d2">Every feature included. Completely free.</p>
 
       <div class="features-grid">
         <div class="feature-card reveal">
@@ -1325,13 +1311,12 @@
     </div>
   </section>
 
-  <!-- ── Pricing ───────────────────────────────────────── -->
+  <!-- ── Pricing (commented out — free tier, reinstate if paid plan returns)
   <section class="section pricing-section" id="pricing">
     <div class="section-inner">
       <p class="section-label reveal" style="display:block;text-align:center;">Pricing</p>
       <h2 class="section-title reveal reveal-d1" style="text-align:center;">Simple, transparent pricing.</h2>
       <p class="section-sub reveal reveal-d2" style="text-align:center;margin:0 auto 3rem;">One simple plan, everything included.</p>
-
       <div class="pricing-grid" style="grid-template-columns:1fr;max-width:440px;">
         <div class="pricing-card featured reveal">
           <p class="pricing-tier">Everything included</p>
@@ -1355,6 +1340,7 @@
       </div>
     </div>
   </section>
+  end pricing section ──>
 
   <!-- ── Footer ────────────────────────────────────────── -->
   <footer class="footer">
@@ -1366,14 +1352,9 @@
       <a href="https://app.stacysmom.co.za/privacy">Privacy Policy</a>
       <a href="https://app.stacysmom.co.za/terms">Terms of Service</a>
       <a href="mailto:hello@stacysmom.co.za">Contact</a>
-      <a href="https://app.stacysmom.co.za/refund-policy">Refund Policy</a>
     </div>
     <div>
       <div class="footer-copy">© 2025 Zenzi. All rights reserved.</div>
-      <div class="footer-paystack">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="rgba(255,255,255,0.12)"/><path d="M7 8h10M7 12h10M7 16h6" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Payments powered by Paystack
-      </div>
     </div>
   </footer>
 
